@@ -11,11 +11,11 @@ class Megaphone {
   Megaphone() {}
   Megaphone(int argc, char **argv) : argc_(argc), argv_(argv) {}
 
-  void MakeFeedbackNoise() const {
+  void makeFeedbackNoise() const {
     std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
   }
 
-  void MakeLoudNoise() const {
+  void makeLoudNoise() const {
     for (int i = 1; i < this->argc_; i++)
       for (const char *p = this->argv_[i]; *p; p++)
         std::cout << char(toupper(*p));
@@ -23,22 +23,22 @@ class Megaphone {
   }
 
  public:
-  static Megaphone FromArgs(int argc, char *argv[]) {
+  static Megaphone fromArgs(int argc, char *argv[]) {
     return Megaphone(argc, argv);
   }
 
-  void MakeNoise() const {
+  void makeNoise() const {
     if (this->argc_ == 1) {
-      MakeFeedbackNoise();
+      makeFeedbackNoise();
     } else {
-      MakeLoudNoise();
+      makeLoudNoise();
     }
   }
 };
 
 int main(int argc, char *argv[]) {
-  Megaphone megaphone = Megaphone::FromArgs(argc, argv);
+  Megaphone megaphone = Megaphone::fromArgs(argc, argv);
 
-  megaphone.MakeNoise();
+  megaphone.makeNoise();
   return 0;
 }
