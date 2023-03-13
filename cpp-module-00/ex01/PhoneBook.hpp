@@ -4,8 +4,11 @@
 #define PHONE_BOOK_HPP_
 
 #include "./Contact.hpp"
+#include <iostream>
+#include <string>
 
 #define MAX_CONTACTS_STORAGE 8
+#define COMMANDS "[ ADD, SEARCH, EXIT ]"
 
 class PhoneBook {
  private:
