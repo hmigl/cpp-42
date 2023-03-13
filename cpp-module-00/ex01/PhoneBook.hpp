@@ -15,6 +15,8 @@ class PhoneBook {
   Contact contacts_[MAX_CONTACTS_STORAGE];
   static int savedContacts_;
 
+  bool isCommand_(const std::string &command) const;
+
  public:
   PhoneBook();
   ~PhoneBook();
