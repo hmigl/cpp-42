@@ -19,8 +19,8 @@ class PhoneBook {
   void run(void);
 
   bool add(void);
-  bool search(void);
-  bool exit(void);
+  bool search(void) const;
+  int exit(void) const;
 };
 
 #endif // PHONE_BOOK_HPP_
