@@ -5,15 +5,22 @@
 
 #include <string>
 
-struct Contact {
-  const std::string firstName;
-  const std::string lastName;
-  const std::string nickname;
-  const std::string phoneNo;
-  const std::string darkestSecret;
+class Contact {
+ private:
+  const std::string firstName_;
+  const std::string lastName_;
+  const std::string nickname_;
+  const std::string phoneNo_;
+  const std::string darkestSecret_;
 
+ public:
   Contact();
   ~Contact();
+  Contact(const std::string &firstName_, const std::string &lastName_,
+          const std::string &nickname_, const std::string &phoneNo_,
+          const std::string &darkestSecret_);
+
+  static Contact fromStdin(void);
 };
 
 #endif // CONTACT_HPP_
