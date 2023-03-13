@@ -8,14 +8,13 @@ PhoneBook::PhoneBook() {}
 
 PhoneBook::~PhoneBook() {}
 
-bool PhoneBook::isCommand_(const std::string &command) const {
-  const std::string commands[] = {"ADD", "SEARCH", "EXIT"};
-
-  for (int i = 0; i < static_cast<int>(commands->size()); i++) {
-    if (!command.compare(commands[i])) {
-      return true;
-    }
-  }
+bool PhoneBook::executeCommand_(const std::string &command) {
+  if (!command.compare("ADD"))
+    return add();
+  if (!command.compare("SEARCH"))
+    return search();
+  if (!command.compare("EXIT"))
+    return exit();
   return false;
 }
 
@@ -23,16 +22,25 @@ bool PhoneBook::add(void) { return true; }
 
 bool PhoneBook::search(void) const { return true; }
 
-int PhoneBook::exit(void) const { return true; }
+bool PhoneBook::exit(void) const {
+  std::cout << "Erasing all phonebook data...\n";
+  return true;
+}
 
 void PhoneBook::run(void) {
+  bool done = false;
   std::string command = "";
 
-  for (;;) {
-    std::cout << "Please enter one of following commands: " << COMMANDS << "\n";
+  while (!done) {
+    std::cout << "Please enter one of the following commands: " << COMMANDS
+              << "\n";
     std::getline(std::cin, command);
-    if (isCommand_(command)) {
-      std::cout << "uepa!\n";
+    if (!command.compare("ADD")) {
+      add();
+    } else if (!command.compare("SEARCH")) {
+      search();
+    } else if (!command.compare("EXIT")) {
+      done = exit();
     }
   }
 }

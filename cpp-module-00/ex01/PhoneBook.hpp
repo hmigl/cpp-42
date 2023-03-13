@@ -15,17 +15,17 @@ class PhoneBook {
   Contact contacts_[MAX_CONTACTS_STORAGE];
   static int savedContacts_;
 
-  bool isCommand_(const std::string &command) const;
+  bool executeCommand_(const std::string &command);
 
  public:
   PhoneBook();
+
   ~PhoneBook();
 
   void run(void);
-
   bool add(void);
   bool search(void) const;
-  int exit(void) const;
+  bool exit(void) const;
 };
 
 #endif // PHONE_BOOK_HPP_
