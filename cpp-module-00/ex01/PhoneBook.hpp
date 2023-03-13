@@ -14,6 +14,12 @@ class PhoneBook {
  public:
   PhoneBook();
   ~PhoneBook();
+
+  void run(void);
+
+  bool add(void);
+  bool search(void);
+  bool exit(void);
 };
 
 #endif // PHONE_BOOK_HPP_
