@@ -8,7 +8,7 @@ LDFLAGS  +=
 LDLIBS   +=
 CXX      ?= g++
 
-SRCS     := PhoneBook.cpp Contact.cpp
+SRCS     := main.cpp PhoneBook.cpp Contact.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
 NAME     := phonebook
