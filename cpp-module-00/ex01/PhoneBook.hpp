@@ -15,7 +15,9 @@ class PhoneBook {
   Contact contacts_[MAX_CONTACTS_STORAGE];
   static int savedContacts_;
 
-  bool executeCommand_(const std::string &command);
+  bool add(void);
+  bool search(void) const;
+  bool exit(void) const;
 
  public:
   PhoneBook();
@@ -23,9 +25,6 @@ class PhoneBook {
   ~PhoneBook();
 
   void run(void);
-  bool add(void);
-  bool search(void) const;
-  bool exit(void) const;
 };
 
 #endif // PHONE_BOOK_HPP_

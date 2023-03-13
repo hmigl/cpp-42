@@ -8,16 +8,6 @@ PhoneBook::PhoneBook() {}
 
 PhoneBook::~PhoneBook() {}
 
-bool PhoneBook::executeCommand_(const std::string &command) {
-  if (!command.compare("ADD"))
-    return add();
-  if (!command.compare("SEARCH"))
-    return search();
-  if (!command.compare("EXIT"))
-    return exit();
-  return false;
-}
-
 bool PhoneBook::add(void) { return true; }
 
 bool PhoneBook::search(void) const { return true; }
