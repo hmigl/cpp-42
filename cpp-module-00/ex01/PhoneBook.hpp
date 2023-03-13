@@ -10,6 +10,7 @@
 class PhoneBook {
  private:
   Contact contacts_[MAX_CONTACTS_STORAGE];
+  static int savedContacts_;
 
  public:
   PhoneBook();
