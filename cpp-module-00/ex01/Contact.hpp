@@ -3,6 +3,7 @@
 #ifndef CONTACT_HPP_
 #define CONTACT_HPP_
 
+#include <iostream>
 #include <ostream>
 #include <sstream>
 #include <string>
@@ -18,6 +19,7 @@ class Contact {
  public:
   Contact();
   ~Contact();
+
   Contact(const std::string &firstName, const std::string &lastName,
           const std::string &nickname, const std::string &phoneNo,
           const std::string &darkestSecret);

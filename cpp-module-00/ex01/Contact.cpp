@@ -19,9 +19,35 @@ const std::string &Contact::getPhoneNo() const { return phoneNo_; }
 const std::string &Contact::getDarkestSecret() const { return darkestSecret_; }
 
 Contact Contact::fromStdin() {
-  std::string firstName = "a", lastName = "b", nickname = "c", phoneNo = "d",
-              darkestSecret = "e";
+  std::string firstName, lastName, nickname, phoneNo, darkestSecret, buff = "";
+  const std::string properties[] = {"First name", "Last name", "Nickname",
+                                    "Phone number", "Darkest secret"};
 
+  for (int i = 0;
+       i < static_cast<int>(sizeof(properties) / sizeof(properties[0])); i++) {
+    do {
+      std::cout << "Insert the contact's " << properties[i] << ": ";
+      std::getline(std::cin, buff);
+    } while (buff.empty());
+
+    switch (i) {
+    case 0:
+      firstName = buff;
+      break;
+    case 1:
+      lastName = buff;
+      break;
+    case 2:
+      nickname = buff;
+      break;
+    case 3:
+      phoneNo = buff;
+      break;
+    case 4:
+      darkestSecret = buff;
+      break;
+    }
+  }
   return Contact(firstName, lastName, nickname, phoneNo, darkestSecret);
 }
 
