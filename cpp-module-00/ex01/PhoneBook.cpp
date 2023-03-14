@@ -8,7 +8,7 @@ PhoneBook::PhoneBook() {}
 
 PhoneBook::~PhoneBook() {}
 
-bool PhoneBook::add(void) {
+bool PhoneBook::add_(void) {
   Contact contact = Contact::fromStdin();
 
   this->contacts_[PhoneBook::oldestIndex_++] = contact;
@@ -18,9 +18,9 @@ bool PhoneBook::add(void) {
   return true;
 }
 
-bool PhoneBook::search(void) const { return true; }
+bool PhoneBook::search_(void) const { return true; }
 
-bool PhoneBook::exit(void) const {
+bool PhoneBook::exit_(void) const {
   std::cout << "Erasing all phonebook data...\n";
   return true;
 }
@@ -34,11 +34,11 @@ void PhoneBook::run(void) {
               << "\n";
     std::getline(std::cin, command);
     if (!command.compare("ADD")) {
-      add();
+      add_();
     } else if (!command.compare("SEARCH")) {
-      search();
+      search_();
     } else if (!command.compare("EXIT")) {
-      done = exit();
+      done = exit_();
     }
   }
 }

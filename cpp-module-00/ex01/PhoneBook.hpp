@@ -15,9 +15,9 @@ class PhoneBook {
   Contact contacts_[MAX_PHONEBOOK_STORAGE];
   static int oldestIndex_;
 
-  bool add(void);
-  bool search(void) const;
-  bool exit(void) const;
+  bool add_(void);
+  bool search_(void) const;
+  bool exit_(void) const;
 
  public:
   PhoneBook();
