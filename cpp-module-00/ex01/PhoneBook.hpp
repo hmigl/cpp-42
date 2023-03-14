@@ -7,13 +7,13 @@
 #include <iostream>
 #include <string>
 
-#define MAX_CONTACTS_STORAGE 8
+#define MAX_PHONEBOOK_STORAGE 8
 #define COMMANDS "[ ADD, SEARCH, EXIT ]"
 
 class PhoneBook {
  private:
-  Contact contacts_[MAX_CONTACTS_STORAGE];
-  static int savedContacts_;
+  Contact contacts_[MAX_PHONEBOOK_STORAGE];
+  static int oldestIndex_;
 
   bool add(void);
   bool search(void) const;

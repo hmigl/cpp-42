@@ -2,7 +2,7 @@
 
 #include "./PhoneBook.hpp"
 
-int PhoneBook::savedContacts_ = 0;
+int PhoneBook::oldestIndex_ = 0;
 
 PhoneBook::PhoneBook() {}
 
@@ -11,7 +11,10 @@ PhoneBook::~PhoneBook() {}
 bool PhoneBook::add(void) {
   Contact contact = Contact::fromStdin();
 
-  std::cout << contact.toString();
+  this->contacts_[PhoneBook::oldestIndex_++] = contact;
+  if (PhoneBook::oldestIndex_ > MAX_PHONEBOOK_STORAGE - 1) {
+    PhoneBook::oldestIndex_ = 0;
+  }
   return true;
 }
 
