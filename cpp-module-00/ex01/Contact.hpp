@@ -10,11 +10,11 @@
 
 class Contact {
  private:
-  const std::string firstName_;
-  const std::string lastName_;
-  const std::string nickname_;
-  const std::string phoneNo_;
-  const std::string darkestSecret_;
+  std::string firstName_;
+  std::string lastName_;
+  std::string nickname_;
+  std::string phoneNo_;
+  std::string darkestSecret_;
 
  public:
   Contact();
