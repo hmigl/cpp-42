@@ -8,7 +8,12 @@ PhoneBook::PhoneBook() {}
 
 PhoneBook::~PhoneBook() {}
 
-bool PhoneBook::add(void) { return true; }
+bool PhoneBook::add(void) {
+  Contact contact = Contact::fromStdin();
+
+  std::cout << contact.toString();
+  return true;
+}
 
 bool PhoneBook::search(void) const { return true; }
 
