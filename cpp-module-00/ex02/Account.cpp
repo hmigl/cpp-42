@@ -34,6 +34,12 @@ int Account::getNbDeposits(void) { return _totalNbDeposits; }
 
 int Account::getNbWithdrawals(void) { return _totalNbWithdrawals; }
 
-void Account::displayAccountsInfos(void) {}
+void Account::displayAccountsInfos(void) {
+  // _displayTimestamp();
+  std::cout << "accounts:" << Account::_nbAccounts << ";"
+            << "total:" << Account::_totalAmount << ";"
+            << "deposits:" << Account::_totalNbDeposits << ";"
+            << "withdrawals:" << Account::_totalNbWithdrawals << '\n';
+}
 
 void Account::_displayTimestamp(void) {}
