@@ -28,7 +28,15 @@ bool PhoneBook::add_(void) {
 }
 
 bool PhoneBook::search_(void) const {
+  int contactIndex = -1;
+
   displaySavedContacts_();
+  do {
+    std::cout
+        << "Enter the index of the contact you wish to see details: (0-7)\n";
+    std::cin >> contactIndex;
+  } while (!(contactIndex >= 0 && contactIndex <= 7));
+  std::cout << this->contacts_[contactIndex].toString();
   return true;
 }
 
