@@ -5,6 +5,7 @@
 
 #include "./Contact.hpp"
 #include <iostream>
+#include <iomanip>
 #include <string>
 
 #define MAX_PHONEBOOK_STORAGE 8
@@ -18,6 +19,7 @@ class PhoneBook {
   bool add_(void);
   bool search_(void) const;
   bool exit_(void) const;
+  void displaySavedContacts_(void) const;
 
  public:
   PhoneBook();

@@ -8,6 +8,15 @@ PhoneBook::PhoneBook() {}
 
 PhoneBook::~PhoneBook() {}
 
+void PhoneBook::displaySavedContacts_(void) const {
+  int n = 10;
+
+  std::cout << "Saved contacts: \n";
+  for (int i = 0; i < MAX_PHONEBOOK_STORAGE; i++) {
+    this->contacts_[i].display(n, i);
+  }
+}
+
 bool PhoneBook::add_(void) {
   Contact contact = Contact::fromStdin();
 
@@ -18,7 +27,10 @@ bool PhoneBook::add_(void) {
   return true;
 }
 
-bool PhoneBook::search_(void) const { return true; }
+bool PhoneBook::search_(void) const {
+  displaySavedContacts_();
+  return true;
+}
 
 bool PhoneBook::exit_(void) const {
   std::cout << "Erasing all phonebook data...\n";

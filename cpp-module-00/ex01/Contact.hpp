@@ -4,6 +4,7 @@
 #define CONTACT_HPP_
 
 #include <iostream>
+#include <iomanip>
 #include <ostream>
 #include <sstream>
 #include <string>
@@ -25,6 +26,7 @@ class Contact {
           const std::string &darkestSecret);
 
   static Contact fromStdin(void);
+  void display(int n, int i) const;
   const std::string &getFirstName() const;
   const std::string &getLastName() const;
   const std::string &getNickname() const;

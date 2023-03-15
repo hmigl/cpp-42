@@ -18,6 +18,15 @@ const std::string &Contact::getNickname() const { return nickname_; }
 const std::string &Contact::getPhoneNo() const { return phoneNo_; }
 const std::string &Contact::getDarkestSecret() const { return darkestSecret_; }
 
+void Contact::display(int n, int i) const {
+  if (firstName_.empty())
+    return;
+  std::cout << std::setw(n) << std::right << i << "|";
+  std::cout << std::setw(n) << std::right << firstName_ << "|";
+  std::cout << std::setw(n) << std::right << lastName_ << "|";
+  std::cout << std::setw(n) << std::right << nickname_ << "|\n";
+}
+
 Contact Contact::fromStdin() {
   std::string firstName, lastName, nickname, phoneNo, darkestSecret, buff = "";
   const std::string properties[] = {"First name", "Last name", "Nickname",
