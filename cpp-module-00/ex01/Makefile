@@ -1,7 +1,6 @@
 SHELL := /bin/sh
 
 OBJDIR   := objdir
-DEPDIR   := $(OBJDIR)/deps
 
 CXXFLAGS += -Wall -Wextra -Werror -std=c++98
 LDFLAGS  +=
@@ -20,12 +19,12 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(LINK.cpp) $(OUTPUT_OPTION) $^
 
-$(OBJDIR)/%.o: %.cpp Makefile | $(OBJDIR) $(DEPDIR)
-	$(COMPILE.cpp) $(OUTPUT_OPTION) -MMD -MF $(DEPDIR)/$*.d $<
+$(OBJDIR)/%.o: %.cpp Makefile | $(OBJDIR)
+	$(COMPILE.cpp) $(OUTPUT_OPTION) -MMD -MP $<
 
 -include $(DEPS)
 
-$(OBJDIR) $(DEPDIR):
+$(OBJDIR):
 	mkdir $@
 
 clean:
