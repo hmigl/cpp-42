@@ -26,13 +26,13 @@ int Account::checkAmount(void) const { return 0; }
 
 void Account::displayStatus(void) const {}
 
-int Account::getNbAccounts(void) { return 0; }
+int Account::getNbAccounts(void) { return _nbAccounts; }
 
-int Account::getTotalAmount(void) { return 0; }
+int Account::getTotalAmount(void) { return _totalAmount; }
 
-int Account::getNbDeposits(void) { return 0; }
+int Account::getNbDeposits(void) { return _totalNbDeposits; }
 
-int Account::getNbWithdrawals(void) { return 0; }
+int Account::getNbWithdrawals(void) { return _totalNbWithdrawals; }
 
 void Account::displayAccountsInfos(void) {}
 
