@@ -3,8 +3,8 @@
 #ifndef CONTACT_HPP_
 #define CONTACT_HPP_
 
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <ostream>
 #include <sstream>
 #include <string>
@@ -16,6 +16,8 @@ class Contact {
   std::string nickname_;
   std::string phoneNo_;
   std::string darkestSecret_;
+
+  std::string truncateField_(const std::string &field) const;
 
  public:
   Contact();

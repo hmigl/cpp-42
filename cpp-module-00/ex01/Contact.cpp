@@ -18,13 +18,22 @@ const std::string &Contact::getNickname() const { return nickname_; }
 const std::string &Contact::getPhoneNo() const { return phoneNo_; }
 const std::string &Contact::getDarkestSecret() const { return darkestSecret_; }
 
+std::string Contact::truncateField_(const std::string &field) const {
+  if (field.length() <= 10) {
+    return field;
+  }
+  std::string truncated = field.substr(0, 10);
+  truncated[9] = '.';
+  return truncated;
+}
+
 void Contact::display(int n, int i) const {
   if (firstName_.empty())
     return;
   std::cout << std::setw(n) << std::right << i << "|";
-  std::cout << std::setw(n) << std::right << firstName_ << "|";
-  std::cout << std::setw(n) << std::right << lastName_ << "|";
-  std::cout << std::setw(n) << std::right << nickname_ << "|\n";
+  std::cout << std::setw(n) << std::right << truncateField_(firstName_) << "|";
+  std::cout << std::setw(n) << std::right << truncateField_(lastName_) << "|";
+  std::cout << std::setw(n) << std::right << truncateField_(nickname_) << "|\n";
 }
 
 Contact Contact::fromStdin() {
