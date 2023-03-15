@@ -1,14 +1,20 @@
 // Copyright (c) 2023 hmigl <hmigl@student.42sp.org.br>. All rights reserved.
 
 #include "./Account.hpp"
+#include <iostream>
 
 int Account::_nbAccounts = 0, Account::_totalAmount = 0,
     Account::_totalNbDeposits = 0, Account::_totalNbWithdrawals = 0;
 
-Account::Account(int initial_deposit) {
-}
+Account::Account(int initial_deposit)
+    : _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0) {
+  _accountIndex = Account::_nbAccounts++;
+  Account::_totalAmount += initial_deposit;
 
-Account::Account(void) {}
+  // _displayTimestamp();
+  std::cout << "index:" << _accountIndex << ";amount:" << _amount
+            << ";created\n";
+}
 
 Account::~Account(void) {}
 
