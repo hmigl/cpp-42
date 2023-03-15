@@ -52,7 +52,7 @@ void PhoneBook::run(void) {
   while (!done) {
     std::cout << "Please enter one of the following commands: " << COMMANDS
               << "\n";
-    std::getline(std::cin, command);
+    std::getline(std::cin >> std::ws, command);
     if (!command.compare("ADD")) {
       add_();
     } else if (!command.compare("SEARCH")) {
