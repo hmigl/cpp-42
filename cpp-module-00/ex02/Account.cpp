@@ -25,13 +25,32 @@ void Account::makeDeposit(int deposit) {
   _nbDeposits++;
   Account::_totalNbDeposits++;
 
-  _displayTimestamp();
+  // _displayTimestamp();
   std::cout << "index:" << _accountIndex << ";p_amount:" << _amount - deposit
             << ";deposit:" << deposit << ";amount:" << _amount
             << ";nb_deposits:" << _nbDeposits << '\n';
 }
 
-bool Account::makeWithdrawal(int withdrawal) { return true; }
+bool Account::makeWithdrawal(int withdrawal) {
+  // _displayTimestamp();
+
+  std::cout << "index:" << _accountIndex << ";p_amount:" << _amount
+            << ";withdrawal:";
+  if (withdrawal > _amount) {
+    std::cout << "refused" << '\n';
+    return false;
+  }
+
+  _amount -= withdrawal;
+  _totalAmount -= withdrawal;
+
+  _nbWithdrawals++;
+  _totalNbWithdrawals++;
+
+  std::cout << withdrawal << ";amount:" << _amount
+            << ";nb_withdrawals:" << _nbWithdrawals << '\n';
+  return true;
+}
 
 int Account::checkAmount(void) const { return 0; }
 
