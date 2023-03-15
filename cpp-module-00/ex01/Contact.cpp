@@ -69,6 +69,8 @@ Contact Contact::fromStdin() {
   return Contact(firstName, lastName, nickname, phoneNo, darkestSecret);
 }
 
+bool Contact::exists(void) const { return !this->firstName_.empty(); }
+
 std::ostream &operator<<(std::ostream &os, const Contact &contact) {
   return (os << "Contact{ "
              << "firstName=" << contact.getFirstName() << ", lastName="

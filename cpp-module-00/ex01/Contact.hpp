@@ -28,12 +28,16 @@ class Contact {
           const std::string &darkestSecret);
 
   static Contact fromStdin(void);
+
   void display(int n, int i) const;
+  bool exists(void) const;
+
   const std::string &getFirstName() const;
   const std::string &getLastName() const;
   const std::string &getNickname() const;
   const std::string &getPhoneNo() const;
   const std::string &getDarkestSecret() const;
+
   std::string toString(void) const;
 };
 

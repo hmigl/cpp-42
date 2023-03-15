@@ -33,9 +33,14 @@ bool PhoneBook::search_(void) const {
   displaySavedContacts_();
   do {
     std::cout
-        << "Enter the index of the contact you wish to see details: (0-7)\n";
+        << "Enter the index of the contact you wish to see details (0-7): ";
     std::cin >> contactIndex;
   } while (!(contactIndex >= 0 && contactIndex <= 7));
+
+  if (!this->contacts_[contactIndex].exists()) {
+    std::cout << "Index does not match any contact\n";
+    return false;
+  }
   std::cout << this->contacts_[contactIndex].toString();
   return true;
 }
