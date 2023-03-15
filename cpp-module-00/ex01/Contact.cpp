@@ -49,21 +49,11 @@ Contact Contact::fromStdin() {
     } while (buff.empty());
 
     switch (i) {
-    case 0:
-      firstName = buff;
-      break;
-    case 1:
-      lastName = buff;
-      break;
-    case 2:
-      nickname = buff;
-      break;
-    case 3:
-      phoneNo = buff;
-      break;
-    case 4:
-      darkestSecret = buff;
-      break;
+      case 0: firstName = buff; break;
+      case 1: lastName = buff; break;
+      case 2: nickname = buff; break;
+      case 3: phoneNo = buff; break;
+      case 4: darkestSecret = buff; break;
     }
   }
   return Contact(firstName, lastName, nickname, phoneNo, darkestSecret);
@@ -72,11 +62,11 @@ Contact Contact::fromStdin() {
 bool Contact::exists(void) const { return !this->firstName_.empty(); }
 
 std::ostream &operator<<(std::ostream &os, const Contact &contact) {
-  return (os << "Contact{ "
-             << "firstName=" << contact.getFirstName() << ", lastName="
-             << contact.getLastName() << ", nickname=" << contact.getNickname()
-             << ", phoneNo=" << contact.getPhoneNo()
-             << ", darkestSecret=" << contact.getDarkestSecret() << " }\n");
+  return (os << "First name: " << contact.getFirstName() << '\n'
+             << "Last name: " << contact.getLastName() << '\n'
+             << "Nickname: " << contact.getNickname() << '\n'
+             << "Phone number: " << contact.getPhoneNo() << '\n'
+             << "Darkest secret: " << contact.getDarkestSecret() << "\n");
 }
 
 std::string Contact::toString(void) const {
