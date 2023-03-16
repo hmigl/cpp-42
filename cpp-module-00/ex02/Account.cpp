@@ -1,6 +1,7 @@
 // Copyright (c) 2023 hmigl <hmigl@student.42sp.org.br>. All rights reserved.
 
 #include "./Account.hpp"
+
 #include <ctime>
 #include <iostream>
 
@@ -8,19 +9,20 @@ int Account::_nbAccounts = 0, Account::_totalAmount = 0,
     Account::_totalNbDeposits = 0, Account::_totalNbWithdrawals = 0;
 
 Account::Account(int initial_deposit)
-    : _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0) {
-  _accountIndex = Account::_nbAccounts++;
+    : _accountIndex(Account::_nbAccounts++),
+      _amount(initial_deposit),
+      _nbDeposits(0),
+      _nbWithdrawals(0) {
   Account::_totalAmount += initial_deposit;
-
   _displayTimestamp();
   std::cout << "index:" << _accountIndex << ";amount:" << _amount
             << ";created\n";
 }
 
 Account::~Account(void) {
-  _displayTimestamp();
-
   Account::_nbAccounts--;
+
+  _displayTimestamp();
   std::cout << "index:" << _accountIndex << ";amount:" << _amount
             << ";closed\n";
 }
@@ -40,14 +42,13 @@ void Account::makeDeposit(int deposit) {
 
 bool Account::makeWithdrawal(int withdrawal) {
   _displayTimestamp();
-
   std::cout << "index:" << _accountIndex << ";p_amount:" << _amount
             << ";withdrawal:";
+
   if (withdrawal > _amount) {
     std::cout << "refused\n";
     return false;
   }
-
   _amount -= withdrawal;
   _totalAmount -= withdrawal;
 
