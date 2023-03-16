@@ -5,10 +5,11 @@
 Zombie *newZombie(std::string name);
 
 int main(void) {
-  Zombie z("Foo");
+  Zombie z("Foo");                // stack allocation
   Zombie *zz = newZombie("Bar");  // heap allocation
 
   z.announce();
   zz->announce();
+  delete zz;  // deallocate the memory
   return 0;
 }
