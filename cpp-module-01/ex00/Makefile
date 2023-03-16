@@ -7,8 +7,8 @@ LDFLAGS  +=
 LDLIBS   +=
 CXX      ?= c++
 
-# newZombie.cpp randomChump.cpp
-SRCS     := main.cpp Zombie.cpp
+# randomChump.cpp
+SRCS     := main.cpp Zombie.cpp newZombie.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
 NAME     := braiiiiiiinnnzzzZ

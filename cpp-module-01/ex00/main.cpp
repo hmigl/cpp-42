@@ -2,9 +2,13 @@
 
 #include "./Zombie.hpp"
 
+Zombie *newZombie(std::string name);
+
 int main(void) {
   Zombie z("Foo");
+  Zombie *zz = newZombie("Bar");  // heap allocation
 
   z.announce();
+  zz->announce();
   return 0;
 }
