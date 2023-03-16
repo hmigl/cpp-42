@@ -10,7 +10,7 @@ CXX      ?= c++
 SRCS     := main.cpp Zombie.cpp zombieHorde.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
-NAME     := moreBraiiiiiiinnnzzzZ
+NAME     := horde
 
 .PHONY: all clean fclean re options
 
