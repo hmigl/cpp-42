@@ -7,5 +7,5 @@ HumanB::HumanB(const std::string &name) : name_(name) {}
 HumanB::~HumanB() {}
 
 void HumanB::attack() const {
-  std::cout << name_ << "attacks with their " << weapon_->getType() << '\n';
+  std::cout << name_ << " attacks with their " << weapon_->getType() << '\n';
 }
