@@ -1,5 +1,8 @@
 // Copyright (c) 2023 hmigl <hmigl@student.42sp.org.br>. All rights reserved.
 
+#ifndef HUMAN_B_
+#define HUMAN_B_
+
 #include <iostream>
 #include <string>
 
@@ -16,3 +19,5 @@ class HumanB {
 
   void attack() const;
 };
+
+#endif  // HUMAN_B_

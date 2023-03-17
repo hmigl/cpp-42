@@ -1,5 +1,8 @@
 // Copyright (c) 2023 hmigl <hmigl@student.42sp.org.br>. All rights reserved.
 
+#ifndef WEAPON_
+#define WEAPON_
+
 #include <string>
 
 class Weapon {
@@ -13,3 +16,5 @@ class Weapon {
   const std::string &getType(void) const;
   void setType(const std::string &type);
 };
+
+#endif  // WEAPON_
