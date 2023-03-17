@@ -2,7 +2,7 @@
 
 #include "./HumanB.hpp"
 
-HumanB::HumanB(const std::string &name) : name_(name) {}
+HumanB::HumanB(const std::string &name) : name_(name), weapon_(NULL) {}
 
 HumanB::~HumanB() {}
 
