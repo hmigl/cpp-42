@@ -20,5 +20,12 @@ int main(void) {
     club.setType("some other type of club");
     jim.attack();
   }
+  {
+    Weapon club = Weapon("crude spiked club");
+    HumanB claudio("Claudio");
+    claudio.attack();
+    claudio.setWeapon(club);
+    claudio.attack();
+  }
   return 0;
 }
