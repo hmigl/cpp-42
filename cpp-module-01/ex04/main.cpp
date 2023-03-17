@@ -10,6 +10,8 @@ int main(int argc, char *argv[]) {
     return 1;
   }
   Sedpp sedpp = Sedpp::fromFilename(argv[1]);
-  // sedpp.replace(argv[1], argv[2]);
+
+  sedpp.replace(argv[2], argv[3]);
+  sedpp.writeToOutputFile();
   return 0;
 }
