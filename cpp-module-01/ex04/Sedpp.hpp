@@ -10,7 +10,7 @@ class Sedpp {
   std::string filename_;
   std::string contents_;
 
-  explicit Sedpp(const std::string &filename);
+  Sedpp(const std::string &filename, const std::string &contents);
 
  public:
   ~Sedpp();
