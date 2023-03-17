@@ -1,7 +1,7 @@
 // Copyright (c) 2023 hmigl <hmigl@student.42sp.org.br>. All rights reserved.
 
-#ifndef HUMAN_A_
-#define HUMAN_A_
+#ifndef HUMAN_A_HPP_
+#define HUMAN_A_HPP_
 
 #include <iostream>
 #include <string>
@@ -20,4 +20,4 @@ class HumanA {
   void attack() const;
 };
 
-#endif  // HUMAN_A_
+#endif  // HUMAN_A_HPP_

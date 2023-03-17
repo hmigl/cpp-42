@@ -1,7 +1,7 @@
 // Copyright (c) 2023 hmigl <hmigl@student.42sp.org.br>. All rights reserved.
 
-#ifndef HUMAN_B_
-#define HUMAN_B_
+#ifndef HUMAN_B_HPP_
+#define HUMAN_B_HPP_
 
 #include <iostream>
 #include <string>
@@ -21,4 +21,4 @@ class HumanB {
   void setWeapon(Weapon &weapon);
 };
 
-#endif  // HUMAN_B_
+#endif  // HUMAN_B_HPP_
