@@ -17,6 +17,7 @@ class Sedpp {
 
   static Sedpp fromFilename(const std::string &filename);
   bool replace(const std::string &searchStr, const std::string &replaceStr);
+  void writeToOutputFile() const;
 };
 
 #endif  // SEDPP_HPP_
