@@ -14,7 +14,22 @@ Sedpp::Sedpp(const std::string &filename, const std::string &contents)
 
 Sedpp::~Sedpp() {}
 
-// void Sedpp::replace(const std::string &s1, const std::string &s2) {}
+bool Sedpp::replace(const std::string &searchStr,
+                    const std::string &replaceStr) {
+  if (contents_.find(searchStr) == std::string::npos) {
+    return false;
+  }
+  const size_t searchStrLen = searchStr.length();
+  const size_t replaceStrLen = replaceStr.length();
+  size_t pos = 0;
+
+  while ((pos = contents_.find(searchStr, pos)) != std::string::npos) {
+    contents_ = contents_.substr(0, pos) + replaceStr +
+                contents_.substr(pos + searchStrLen);
+    pos += replaceStrLen;
+  }
+  return true;
+}
 
 Sedpp Sedpp::fromFilename(const std::string &filename) {
   std::ifstream ifs(filename.c_str(), std::ios::in);
