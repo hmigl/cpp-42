@@ -9,5 +9,7 @@ int main(void) {
   harl.complain("INFO");
   harl.complain("WARNING");
   harl.complain("ERROR");
+
+  harl.complain("NOT AN OPTION");
   return 0;
 }
