@@ -10,7 +10,7 @@ CXX      ?= c++
 SRCS     := main.cpp Harl.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
-NAME     := harl
+NAME     := harlFilter
 
 .PHONY: all clean fclean re options
 
