@@ -15,6 +15,8 @@ class Harl {
   void warning(void) const;
   void error(void) const;
 
+  int translateLevel(const std::string &level) const;
+
  public:
   Harl();
   ~Harl();

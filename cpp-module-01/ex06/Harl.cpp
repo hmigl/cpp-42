@@ -13,9 +13,20 @@ Harl::Harl() {}
 
 Harl::~Harl() {}
 
+int Harl::translateLevel(const std::string &level) const {
+  int levelIndex = 0;
+
+  while (levelIndex < MessageLevels &&
+         std::strcmp(level.c_str(), LoggingLevels[levelIndex])) {
+    levelIndex++;
+  }
+  return levelIndex;
+}
+
 void Harl::complain(std::string level) const {
   void (Harl::*levelsTable[MessageLevels])(void)
       const = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+  int levelIndex = translateLevel(level);
 
   for (int i = 0; i < MessageLevels; i++) {
     if (!std::strcmp(LoggingLevels[i], level.c_str())) {
