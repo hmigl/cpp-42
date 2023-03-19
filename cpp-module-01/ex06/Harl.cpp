@@ -28,10 +28,21 @@ void Harl::complain(std::string level) const {
       const = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
   int levelIndex = translateLevel(level);
 
-  for (int i = 0; i < MessageLevels; i++) {
-    if (!std::strcmp(LoggingLevels[i], level.c_str())) {
-      (this->*levelsTable[i])();
-    }
+  switch (levelIndex) {
+    case 0:
+      (this->*levelsTable[levelIndex++])();
+      __attribute__((fallthrough));
+    case 1:
+      (this->*levelsTable[levelIndex++])();
+      __attribute__((fallthrough));
+    case 2:
+      (this->*levelsTable[levelIndex++])();
+      __attribute__((fallthrough));
+    case 3:
+      (this->*levelsTable[levelIndex++])();
+      break;
+    default:
+      std::cout << "[ Probably complaining about insignificant problems ]\n";
   }
 }
 
