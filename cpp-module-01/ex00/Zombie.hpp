@@ -1,5 +1,8 @@
 // Copyright (c) 2023 hmigl <hmigl@student.42sp.org.br>. All rights reserved.
 
+#ifdef ZOMBIE_HPP_
+#define ZOMBIE_HPP_
+
 #include <iostream>
 #include <string>
 
@@ -13,3 +16,5 @@ class Zombie {
 
   void announce(void) const;
 };
+
+#endif  // ZOMBIE_HPP_
