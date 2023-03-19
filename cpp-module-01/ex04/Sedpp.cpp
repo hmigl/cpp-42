@@ -2,13 +2,9 @@
 
 #include "./Sedpp.hpp"
 
-#include <cstdio>
 #include <cstdlib>
 #include <fstream>
-#include <ios>
-#include <iostream>
 #include <sstream>
-#include <string>
 
 Sedpp::Sedpp(const std::string &filename, const std::string &contents)
     : filename_(filename), contents_(contents) {}
@@ -20,6 +16,10 @@ void Sedpp::writeToOutputFile() const {
   std::ofstream outputFile(outputFilename.c_str(),
                            std::ios::out | std::ios::trunc);
 
+  if (!outputFile.is_open()) {
+    std::perror(outputFilename.c_str());
+    exit(1);
+  }
   outputFile << contents_;
   outputFile.close();
 }
