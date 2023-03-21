@@ -26,7 +26,10 @@ Fixed::Fixed(const int num) {
   rawBits_ = num << FractionalBits;
 }
 
-Fixed::Fixed(const float value) { std::cout << "Float constructor called\n"; }
+Fixed::Fixed(const float num) {
+  std::cout << "Float constructor called\n";
+  rawBits_ = roundf(num * (1 << FractionalBits));
+}
 
 Fixed::~Fixed() { std::cout << "Destructor called\n"; }
 
