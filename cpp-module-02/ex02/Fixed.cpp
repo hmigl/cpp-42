@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:03:04 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/21 20:08:18 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/21 20:14:54 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,14 @@ Fixed Fixed::operator*(const Fixed &rhs) const {
 Fixed Fixed::operator/(const Fixed &rhs) const {
   return Fixed(this->toFloat() / rhs.toFloat());
 }
+
+Fixed &Fixed::operator+=(const Fixed &rhs) { return (*this = *this + rhs); }
+
+Fixed &Fixed::operator-=(const Fixed &rhs) { return (*this = *this - rhs); }
+
+Fixed &Fixed::operator*=(const Fixed &rhs) { return (*this = *this * rhs); }
+
+Fixed &Fixed::operator/=(const Fixed &rhs) { return (*this = *this / rhs); }
 
 Fixed &Fixed::operator++() {
   rawBits_++;
