@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:03:04 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/21 19:33:34 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/21 19:56:43 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,27 @@ Fixed Fixed::operator/(const Fixed &rhs) const {
   return Fixed(this->toFloat() / rhs.toFloat());
 }
 
-Fixed &Fixed::operator++() {}
+Fixed &Fixed::operator++() {
+  rawBits_++;
+  return *this;
+}
 
-Fixed Fixed::operator++(int) {}
+Fixed Fixed::operator++(int) {
+  Fixed old(*this);
+  ++(*this);
+  return old;
+}
 
-Fixed &Fixed::operator--() {}
+Fixed &Fixed::operator--() {
+  rawBits_--;
+  return *this;
+}
 
-Fixed Fixed::operator--(int) {}
+Fixed Fixed::operator--(int) {
+  Fixed old(*this);
+  --(*this);
+  return old;
+}
 
 std::ostream &operator<<(std::ostream &os, const Fixed &rhs) {
   os << rhs.toFloat();
