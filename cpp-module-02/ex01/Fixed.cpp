@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:03:04 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/21 16:51:09 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/21 17:10:39 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ Fixed::Fixed(const Fixed &other) {
   *this = other;
 }
 
-Fixed::Fixed(const int num) {
+Fixed::Fixed(const int num) : rawBits_(num << FractionalBits) {
   std::cout << "Int constructor called\n";
-  rawBits_ = num << FractionalBits;
 }
 
-Fixed::Fixed(const float num) {
+Fixed::Fixed(const float num) : rawBits_(roundf(num * (1 << FractionalBits))) {
   std::cout << "Float constructor called\n";
-  rawBits_ = roundf(num * (1 << FractionalBits));
 }
 
 Fixed::~Fixed() { std::cout << "Destructor called\n"; }
