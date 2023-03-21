@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:03:04 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/21 19:56:43 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/21 20:08:18 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@ Fixed::Fixed(const int num) : rawBits_(num << FractionalBits) {}
 Fixed::Fixed(const float num) : rawBits_(roundf(num * (1 << FractionalBits))) {}
 
 Fixed::~Fixed() {}
+
+Fixed &Fixed::min(Fixed &lhs, Fixed &rhs) { return lhs < rhs ? lhs : rhs; }
+
+Fixed const &Fixed::min(const Fixed &lhs, const Fixed &rhs) {
+  return lhs < rhs ? lhs : rhs;
+}
+
+Fixed &Fixed::max(Fixed &lhs, Fixed &rhs) { return lhs > rhs ? lhs : rhs; }
+
+Fixed const &Fixed::max(const Fixed &rhs, const Fixed &lhs) {
+  return lhs > rhs ? lhs : rhs;
+}
 
 float Fixed::toFloat() const {
   return static_cast<float>(rawBits_) / (1 << FractionalBits);

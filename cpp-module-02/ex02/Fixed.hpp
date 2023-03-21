@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 12:57:34 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/21 18:55:56 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/21 20:13:04 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,16 @@ class Fixed {
   explicit Fixed(const float);
   ~Fixed();
 
+  static Fixed &min(Fixed &, Fixed &);
+  static const Fixed &min(const Fixed &, const Fixed &);
+  static Fixed &max(Fixed &, Fixed &);
+  static const Fixed &max(const Fixed &, const Fixed &);
+
   float toFloat(void) const;
   int toInt(void) const;
+
   int getRawBits(void) const;
   void setRawBits(const int);
-
-  static Fixed &min(Fixed &, Fixed &);
-  static Fixed &max(Fixed &, Fixed &);
-  static Fixed const &min(Fixed const &, Fixed const &);
-  static Fixed const &max(Fixed const &, Fixed const &);
 
   Fixed &operator=(const Fixed &);
   bool operator>(const Fixed &) const;
