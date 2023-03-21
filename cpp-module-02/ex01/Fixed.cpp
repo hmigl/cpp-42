@@ -21,7 +21,10 @@ Fixed::Fixed(const Fixed &other) {
   *this = other;
 }
 
-Fixed::Fixed(const int value) { std::cout << "Int constructor called\n"; }
+Fixed::Fixed(const int num) {
+  std::cout << "Int constructor called\n";
+  rawBits_ = num << FractionalBits;
+}
 
 Fixed::Fixed(const float value) { std::cout << "Float constructor called\n"; }
 
