@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:23:26 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/23 09:46:26 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/23 10:03:57 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,19 @@ void ClapTrap::attack(const std::string &target) {
             << attackDamage_ << " points of demage!\n";
 }
 
-void ClapTrap::takeDamage(unsigned int amount) {}
+void ClapTrap::takeDamage(unsigned int amount) {
+  if (!hitPoints_ || !amount) {
+    std::cout << "All demage has already been taken!\n";
+    return;
+  }
+  if (amount > hitPoints_) {
+    std::cout << name_ << " takes " << hitPoints_ << " points of demage!\n";
+    hitPoints_ = 0;
+    return;
+  }
+  hitPoints_ -= amount;
+  std::cout << name_ << " takes " << amount << " points of demage!\n";
+}
 
 void ClapTrap::beRepaired(unsigned int amount) {}
 
