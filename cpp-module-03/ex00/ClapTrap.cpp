@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:23:26 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/23 10:30:58 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/23 10:43:17 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,21 @@
 #include <iostream>
 
 ClapTrap::ClapTrap()
-    : name_(""), hitPoints_(10), energyPoints_(10), attackDamage_(0) {}
+    : name_(""), hitPoints_(10), energyPoints_(10), attackDamage_(0) {
+  std::cout << "Default constructor called\n";
+}
 
-ClapTrap::ClapTrap(const ClapTrap &other) { *this = other; }
+ClapTrap::ClapTrap(const ClapTrap &other) {
+  std::cout << "Copy constructor called\n";
+  *this = other;
+}
 
 ClapTrap::ClapTrap(const std::string &name)
-    : name_(name), hitPoints_(10), energyPoints_(10), attackDamage_(0) {}
+    : name_(name), hitPoints_(10), energyPoints_(10), attackDamage_(0) {
+  std::cout << "String constructor called\n";
+}
 
-ClapTrap::~ClapTrap() {}
+ClapTrap::~ClapTrap() { std::cout << "Destructor called\n"; }
 
 void ClapTrap::attack(const std::string &target) {
   if (!hitPoints_ || !energyPoints_) {
@@ -30,8 +37,8 @@ void ClapTrap::attack(const std::string &target) {
     return;
   }
   --energyPoints_;
-  std::cout << "ClapTrap " << name_ << " attacks " << target << ", causing "
-            << attackDamage_ << " points of demage!\n";
+  std::cout << name_ << " attacks " << target << ", causing " << attackDamage_
+            << " points of demage!\n";
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
