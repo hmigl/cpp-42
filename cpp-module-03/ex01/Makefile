@@ -7,7 +7,7 @@ LDFLAGS  +=
 LDLIBS   +=
 CXX      := c++
 
-SRCS     := main.cpp ClapTrap.cpp
+SRCS     := main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
 NAME     := clapTrap
