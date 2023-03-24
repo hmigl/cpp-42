@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:18:52 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/24 10:32:37 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 12:06:12 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include "./ClapTrap.hpp"
 
-class FlagTrap : public ClapTrap {
+class FlagTrap : public virtual ClapTrap {
  public:
   FlagTrap();
   FlagTrap(const FlagTrap &);
