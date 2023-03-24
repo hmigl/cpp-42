@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:23:26 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/23 10:43:17 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 08:17:40 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,14 @@ void ClapTrap::beRepaired(unsigned int amount) {
   --energyPoints_;
   hitPoints_ += amount;
 }
+
+const std::string &ClapTrap::getName() const { return name_; }
+
+unsigned int ClapTrap::getHitPoints() const { return hitPoints_; }
+
+unsigned int ClapTrap::getEnergyPoints() const { return energyPoints_; }
+
+unsigned int ClapTrap::getAttackDamage() const { return attackDamage_; }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
   if (this != &other) {
