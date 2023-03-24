@@ -10,7 +10,7 @@ CXX      := c++
 SRCS     := main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
-NAME     := clapTrap
+NAME     := scavTrap
 
 .PHONY: all clean fclean re options
 
