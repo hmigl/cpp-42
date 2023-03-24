@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:02:39 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/24 07:11:10 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 07:14:00 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ void ScavTrap::attack(const std::string &target) {
   --energyPoints_;
   std::cout << "(ScavTrap) " << name_ << " attacks " << target << ", causing "
             << attackDamage_ << " points of demage!\n";
+}
+
+void ScavTrap::guardGate() {
+  std::cout << "(ScavTrap) " << name_ << " is now in Gate keeper mode!\n";
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other) {
