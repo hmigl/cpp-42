@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:02:39 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/23 17:41:58 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 07:11:10 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name) {
 }
 
 ScavTrap::~ScavTrap() { std::cout << "ScavTrap destructor called\n"; }
+
+void ScavTrap::attack(const std::string &target) {
+  if (!hitPoints_ || !energyPoints_) {
+    std::cout << "(ScavTrap) Cannot perform attack!\n";
+    return;
+  }
+  --energyPoints_;
+  std::cout << "(ScavTrap) " << name_ << " attacks " << target << ", causing "
+            << attackDamage_ << " points of demage!\n";
+}
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other) {
   if (this != &other) {
