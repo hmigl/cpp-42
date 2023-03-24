@@ -20,7 +20,7 @@ class ClapTrap {
   ClapTrap();
   ClapTrap(const ClapTrap &);
   explicit ClapTrap(const std::string &);
-  ~ClapTrap();
+  virtual ~ClapTrap();
 
   void attack(const std::string &);
   void takeDamage(unsigned int);
