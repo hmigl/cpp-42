@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 10:29:43 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/24 10:53:20 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 12:38:37 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./FlagTrap.hpp"
+#include "./FragTrap.hpp"
 
 #include <iostream>
 #include <string>
 
-FlagTrap::FlagTrap() : ClapTrap() {
+FragTrap::FragTrap() : ClapTrap() {
   hitPoints_ = 100;
   energyPoints_ = 100;
   attackDamage_ = 30;
-  std::cout << "FlagTrap default constructor called\n";
+  std::cout << "FragTrap default constructor called\n";
 }
 
-FlagTrap::FlagTrap(const FlagTrap &other) : ClapTrap(other) {
-  std::cout << "FlagTrap copy constructor called\n";
+FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other) {
+  std::cout << "FragTrap copy constructor called\n";
 }
 
-FlagTrap::FlagTrap(const std::string &name) : ClapTrap(name) {
+FragTrap::FragTrap(const std::string &name) : ClapTrap(name) {
   hitPoints_ = 100;
   energyPoints_ = 100;
   attackDamage_ = 30;
-  std::cout << "FlagTrap string constructor called\n";
+  std::cout << "FragTrap string constructor called\n";
 }
 
-void FlagTrap::highFiveGuys() const {
+void FragTrap::highFiveGuys() const {
   if (!hitPoints_) {
     std::cout << name_ << ": No high five today!\n";
     return;
@@ -41,4 +41,4 @@ void FlagTrap::highFiveGuys() const {
   std::cout << name_ << ": positive high fives?!\n";
 }
 
-FlagTrap::~FlagTrap() { std::cout << "FlagTrap destructor called\n"; }
+FragTrap::~FragTrap() { std::cout << "FragTrap destructor called\n"; }

@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:36:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/24 10:58:15 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 12:17:53 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 
 #include "./ClapTrap.hpp"
-#include "./FlagTrap.hpp"
+#include "./FragTrap.hpp"
 #include "./ScavTrap.hpp"
 
 int main(void) {
@@ -63,8 +63,8 @@ int main(void) {
     assert(rogozhin.getHitPoints() == 1880);
   }
   {
-    std::cout << "\n[FlagvTrap]\n";
-    FlagTrap nastasya("Nastasya Filippovna");
+    std::cout << "\n[FragTrap]\n";
+    FragTrap nastasya("Nastasya Filippovna");
     assert(nastasya.getHitPoints() == 100);
     assert(nastasya.getEnergyPoints() == 100);
     assert(nastasya.getAttackDamage() == 30);

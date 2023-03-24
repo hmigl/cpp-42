@@ -7,10 +7,10 @@ LDFLAGS  +=
 LDLIBS   +=
 CXX      := c++
 
-SRCS     := main.cpp ClapTrap.cpp ScavTrap.cpp FlagTrap.cpp
+SRCS     := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
-NAME     := flagTrap
+NAME     := diamondTrap
 
 .PHONY: all clean fclean re options
 
