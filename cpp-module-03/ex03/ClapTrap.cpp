@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:23:26 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/24 08:17:40 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 19:09:58 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 #include <iostream>
 
 ClapTrap::ClapTrap()
-    : name_(""), hitPoints_(10), energyPoints_(10), attackDamage_(0) {
+    : name_(""),
+      hitPoints_(HitPoints),
+      energyPoints_(EnergyPoints),
+      attackDamage_(AttackDamage) {
   std::cout << "Default constructor called\n";
 }
 
@@ -25,7 +28,10 @@ ClapTrap::ClapTrap(const ClapTrap &other) {
 }
 
 ClapTrap::ClapTrap(const std::string &name)
-    : name_(name), hitPoints_(10), energyPoints_(10), attackDamage_(0) {
+    : name_(name),
+      hitPoints_(HitPoints),
+      energyPoints_(EnergyPoints),
+      attackDamage_(AttackDamage) {
   std::cout << "String constructor called\n";
 }
 

@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 17:02:39 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/24 08:01:36 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 19:12:01 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 #include "./ClapTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap() {
-  hitPoints_ = 100;
-  energyPoints_ = 50;
-  attackDamage_ = 20;
+  hitPoints_ = HitPoints;
+  energyPoints_ = EnergyPoints;
+  attackDamage_ = AttackDamage;
   std::cout << "ScavTrap default constructor called\n";
 }
 
@@ -29,9 +29,9 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) {
 }
 
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name) {
-  hitPoints_ = 100;
-  energyPoints_ = 50;
-  attackDamage_ = 20;
+  hitPoints_ = HitPoints;
+  energyPoints_ = EnergyPoints;
+  attackDamage_ = AttackDamage;
   std::cout << "ScavTrap string constructor called\n";
 }
 

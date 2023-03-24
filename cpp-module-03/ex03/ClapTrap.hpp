@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:59:04 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/24 08:19:53 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 19:09:32 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ class ClapTrap {
   unsigned int getAttackDamage() const;
 
   ClapTrap &operator=(const ClapTrap &);
+
+ private:
+  static const unsigned int HitPoints = 10;
+  static const unsigned int EnergyPoints = 10;
+  static const unsigned int AttackDamage = 0;
 
  protected:
   std::string name_;

@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 10:29:43 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/24 12:38:37 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 19:13:11 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include <string>
 
 FragTrap::FragTrap() : ClapTrap() {
-  hitPoints_ = 100;
-  energyPoints_ = 100;
-  attackDamage_ = 30;
+  hitPoints_ = HitPoints;
+  energyPoints_ = EnergyPoints;
+  attackDamage_ = AttackDamage;
   std::cout << "FragTrap default constructor called\n";
 }
 

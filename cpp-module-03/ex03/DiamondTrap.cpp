@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 11:56:26 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/24 13:34:03 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/24 19:15:06 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap() {
   std::cout << "DiamondTrap default constructor called\n";
   name_ = "";
   ClapTrap::name_ = name_ + "_clap_name";
-  hitPoints_ = FragTrap::hitPoints_;
-  energyPoints_ = ScavTrap::energyPoints_;
-  attackDamage_ = FragTrap::attackDamage_;
+  hitPoints_ = HitPoints;
+  energyPoints_ = EnergyPoints;
+  attackDamage_ = AttackDamage;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &other)
@@ -33,9 +33,9 @@ DiamondTrap::DiamondTrap(const DiamondTrap &other)
 DiamondTrap::DiamondTrap(const std::string &name)
     : ScavTrap(name), FragTrap(name) {
   name_ = name;
-  hitPoints_ = FragTrap::hitPoints_;
-  energyPoints_ = ScavTrap::energyPoints_;
-  attackDamage_ = FragTrap::attackDamage_;
+  hitPoints_ = HitPoints;
+  energyPoints_ = EnergyPoints;
+  attackDamage_ = AttackDamage;
   ClapTrap::name_ = name_ + "_clap_name";
   std::cout << "DiamondTrap string constructor called\n";
 }
