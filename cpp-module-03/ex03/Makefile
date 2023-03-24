@@ -2,12 +2,12 @@ SHELL := /bin/sh
 
 OBJDIR   := objdir
 
-CXXFLAGS += -Wall -Wextra -Werror -std=c++98
+CXXFLAGS += -Wall -Wextra -Werror -Wshadow -std=c++98
 LDFLAGS  +=
 LDLIBS   +=
 CXX      := c++
 
-SRCS     := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRCS     := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
 NAME     := diamondTrap
