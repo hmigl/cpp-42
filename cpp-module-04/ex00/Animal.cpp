@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:35:08 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/27 16:58:29 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/27 17:14:16 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 Animal::Animal() : type_("Undefined") {
   std::cout << "(Animal) Default constructor called\n";
+}
+
+Animal::Animal(const std::string &type) : type_(type) {
+  std::cout << "(Animal) String constructor called\n";
 }
 
 Animal::Animal(const Animal &other) {
