@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:34:32 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/27 17:13:11 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/27 17:18:21 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Animal {
   ~Animal();
 
   virtual void makeSound() const;
+  const std::string &getType() const;
 
   Animal &operator=(const Animal &);
 
