@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:36:59 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/27 17:36:59 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/27 17:47:18 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Dog::Dog() : Animal("Dog") {
   std::cout << "(Dog) Default constructor called\n";
 }
 
-Dog::Dog(const Dog &other) {
+Dog::Dog(const Dog &other) : Animal(other) {
   std::cout << "(Dog) Copy constructor called\n";
   *this = other;
 }
