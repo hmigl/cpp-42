@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:51:39 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/27 18:53:54 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/28 16:37:29 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,50 +16,27 @@
 #include "./Dog.hpp"
 #include "./WrongCat.hpp"
 
+const int NbAnimals = 4;
+
 int main(void) {
-  {
-    const Animal *animal = new Animal();
+  const Animal *animals[NbAnimals];
 
-    assert(!animal->getType().compare("Undefined"));
-    std::cout << animal->getType() << '\n';
-    animal->makeSound();
-    delete animal;
-    std::cout << '\n';
+  std::cout << "CREATING ARRAY OF ANIMAL OBJECTS:\n\n";
+  for (int i = 0; i < NbAnimals; ++i) {
+    if (i < NbAnimals / 2) {
+      animals[i] = new Dog();
+    } else {
+      animals[i] = new Cat();
+    }
+    animals[i]->makeSound();
+    std::cout << std::endl;
   }
-  {
-    const Animal *dog = new Dog();
+  std::cout << "------------------------------------\n";
 
-    assert(!dog->getType().compare("Dog"));
-    std::cout << dog->getType() << '\n';
-    dog->makeSound();
-    delete dog;
-    std::cout << '\n';
-  }
-  {
-    const Animal *cat = new Cat();
-
-    assert(!cat->getType().compare("Cat"));
-    std::cout << cat->getType() << '\n';
-    cat->makeSound();
-    delete cat;
-    std::cout << '\n';
-  }
-  {
-    const WrongAnimal *wrongAnimal = new WrongAnimal();
-
-    assert(!wrongAnimal->getType().compare("Undefined"));
-    std::cout << wrongAnimal->getType() << '\n';
-    wrongAnimal->makeSound();
-    delete wrongAnimal;
-    std::cout << '\n';
-  }
-  {
-    const WrongAnimal *wrongCat = new WrongCat();
-
-    assert(!wrongCat->getType().compare("Wrong Cat"));
-    std::cout << wrongCat->getType() << '\n';  // early binding, no polymorphism
-    wrongCat->makeSound();
-    delete wrongCat;
+  std::cout << "DELETING ARRAY OF ANIMAL OBJECTS:\n\n";
+  for (int i = 0; i < NbAnimals; ++i) {
+    delete animals[i];
+    std::cout << std::endl;
   }
   return 0;
 }
