@@ -7,7 +7,7 @@ LDFLAGS  +=
 LDLIBS   +=
 CXX      := c++
 
-SRCS     := main.cpp Animal.cpp Dog.cpp Cat.cpp
+SRCS     := main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
 NAME     := polymorphism
