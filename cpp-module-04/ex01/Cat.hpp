@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:36:55 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/27 17:57:09 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/28 12:02:57 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CAT_HPP_
 
 #include "./Animal.hpp"
+#include "./Brain.hpp"
 
 class Cat : public Animal {
  public:
@@ -24,6 +25,9 @@ class Cat : public Animal {
   void makeSound() const;
 
   Cat &operator=(const Cat &);
+
+ private:
+  Brain *brain_;
 };
 
 #endif  // CAT_HPP_
