@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:35:08 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/27 17:17:52 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/28 19:08:05 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ Animal::Animal(const Animal &other) {
 }
 
 Animal::~Animal() { std::cout << "(Animal) Destructor called\n"; }
-
-void Animal::makeSound() const {
-  std::cout << "(Animal) Making generic sound!\n";
-}
 
 const std::string &Animal::getType() const { return type_; }
 

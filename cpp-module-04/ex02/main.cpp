@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:51:39 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/28 18:30:17 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/28 19:11:15 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 
 int main(void) {
   {
-    const Animal *animal = new Animal();
-
-    assert(!animal->getType().compare("Undefined"));
-    std::cout << animal->getType() << '\n';
-    animal->makeSound();
-    delete animal;
-    std::cout << '\n';
+    // const Animal *animal = new Animal();
+    //
+    // assert(!animal->getType().compare("Undefined"));
+    // std::cout << animal->getType() << '\n';
+    // animal->makeSound();
+    // delete animal;
+    // std::cout << '\n';
   }
   {
     const Animal *dog = new Dog();
@@ -41,7 +41,6 @@ int main(void) {
     std::cout << cat->getType() << '\n';
     cat->makeSound();
     delete cat;
-    std::cout << '\n';
   }
   return 0;
 }
