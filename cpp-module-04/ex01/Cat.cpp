@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:36:59 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/28 13:02:58 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/28 16:54:11 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ Cat::~Cat() {
   std::cout << "(Cat) Destructor called\n";
   delete brain_;
 }
+
+const Brain *Cat::getBrain() const { return brain_; }
 
 void Cat::makeSound() const { std::cout << "(Cat) Meow! Meow! Meow!\n"; }
 

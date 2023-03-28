@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:36:55 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/28 12:02:58 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/28 16:52:53 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Dog : public Animal {
   Dog(const Dog &);
   ~Dog();
 
+  const Brain *getBrain() const;
   void makeSound() const;
 
   Dog &operator=(const Dog &);
