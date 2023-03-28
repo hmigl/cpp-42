@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 17:51:39 by hmigl             #+#    #+#             */
-/*   Updated: 2023/03/28 17:07:55 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/03/28 17:34:59 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void deepCopyTest() {
       delete dcDog;
     }
     std::cout << "dog: " << dog->getBrain()
-              << std::endl;  // if it was a shallow copy, it would have
-                             // undefined behavior, since 'dcDog' is gone
+              << std::endl;  // if it was a shallow copy, undefined behavior
+                             // would've happen, since 'dcDog' is gone
   }
 }
 
