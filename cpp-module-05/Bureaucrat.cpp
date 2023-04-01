@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:19:31 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/01 18:05:38 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/01 18:07:18 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,9 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
     grade_ = other.grade_;
   }
   return *this;
+}
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &obj) {
+  os << obj.getName() << ", bureaucrat grade " << obj.getGrade();
+  return os;
 }

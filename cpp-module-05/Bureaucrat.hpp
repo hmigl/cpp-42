@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:18:58 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/01 18:04:39 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/01 18:07:06 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,5 @@ class Bureaucrat {
   const std::string name_;
   unsigned int grade_;
 };
+
+std::ostream &operator<<(std::ostream &, const Bureaucrat &);
