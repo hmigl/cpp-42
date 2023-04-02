@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:19:31 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 11:59:10 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 12:46:00 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void Bureaucrat::decrementGrade() {
 void Bureaucrat::signForm(Form &form) {
   try {
     form.beSigned(*this);
-    std::cout << name_ << " signed " << form.getName();
+    std::cout << name_ << " signed " << form.getName() << std::endl;
   } catch (const Form::GradeTooLowException &e) {
     std::cout << name_ << " couldn't sign " << form.getName() << " because ";
     std::cout << e.what() << std::endl;

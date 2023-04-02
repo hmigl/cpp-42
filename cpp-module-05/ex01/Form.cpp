@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 10:32:15 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 11:21:25 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 12:47:35 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ const char *Form::GradeTooLowException::what() const throw() {
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &obj) {
-  os << "name: " << obj.getName() << " isSigned: " << obj.getIsSigned()
-     << " requiredGradeToSign: " << obj.getRequiredGradeToSign()
-     << " requiredGradeToExecute: " << obj.getRequiredGradeToExecute();
+  os << "name: " << obj.getName() << " | isSigned: " << obj.getIsSigned()
+     << " | requiredGradeToSign: " << obj.getRequiredGradeToSign()
+     << " | requiredGradeToExecute: " << obj.getRequiredGradeToExecute();
   return os;
 }

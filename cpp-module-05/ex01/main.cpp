@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 18:13:52 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 12:18:56 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 12:53:24 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,39 @@
 #include "./Bureaucrat.hpp"
 #include "./Form.hpp"
 
-const std::string &Name = "Beauro Crat";
+const std::string &BureaucratName = "Beauro Crat";
 const std::string &FormName = "Generic form";
 
-// void shouldDecrementGrade() {
-//   std::cout << "shouldDecrementGrade\n";
-//
-//   std::cout << "creating bureaucrat with grade == 42\n";
-//   Bureaucrat b(Name, 42);
-//   std::cout << "( " << b << " )\n";
-//   for (int i = 0; i < 10; ++i) {
-//     b.decrementGrade();
-//   }
-//   std::cout << "asserting that grade == 52\n";
-//   std::cout << "( " << b << " )\n";
-//   assert(b.getGrade() == 52);
-// }
+void shouldNotSignForm() {
+  std::cout << "shouldNotSignForm\n";
 
-// void shouldIncrementGrade() {
-//   std::cout << "shouldIncrementGrade\n";
-//
-//   std::cout << "creating default bureaucrat with grade == 150\n";
-//   Bureaucrat b;
-//   std::cout << "( " << b << " )\n";
-//   for (int i = 0; i < 10; ++i) {
-//     b.incrementGrade();
-//   }
-//   std::cout << "asserting that grade == 140\n";
-//   assert(b.getGrade() == 140);
-//   std::cout << "( " << b << " )\n";
-//   std::cout << std::endl;
-// }
+  Bureaucrat b(BureaucratName, 42);
+  std::cout << b << std::endl;
+  Form f(FormName, 10, 10);
+  std::cout << f << std::endl;
+  try {
+    b.signForm(f);
+    std::cout << f << std::endl;
+  } catch (const Form::GradeTooLowException &e) {
+    std::cout << f << std::endl;
+  }
+}
+
+void shouldSignForm() {
+  std::cout << "shouldSignForm\n";
+
+  Bureaucrat b(BureaucratName, 5);
+  std::cout << b << std::endl;
+  Form f(FormName, 10, 10);
+  std::cout << f << std::endl;
+  try {
+    b.signForm(f);
+    std::cout << f << std::endl;
+  } catch (const Form::GradeTooLowException &e) {
+    std::cout << "this line should be unreachable";
+  }
+  std::cout << std::endl;
+}
 
 void shouldThrowGradeTooHighException() {
   std::cout << "shouldThrowGradeTooHighException\n";
@@ -89,7 +91,7 @@ void shouldThrowGradeTooLowException() {
 int main() {
   shouldThrowGradeTooLowException();
   shouldThrowGradeTooHighException();
-  // shouldIncrementGrade();
-  // shouldDecrementGrade();
+  shouldSignForm();
+  shouldNotSignForm();
   return 0;
 }
