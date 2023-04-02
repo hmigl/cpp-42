@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:20:54 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 16:22:08 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 20:02:14 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class RobotomyRequestForm : public AForm {
 
   RobotomyRequestForm &operator=(const RobotomyRequestForm &);
 
-  void execute(const Bureaucrat &);
+  void execute(const Bureaucrat &) const;
 
  private:
   RobotomyRequestForm();

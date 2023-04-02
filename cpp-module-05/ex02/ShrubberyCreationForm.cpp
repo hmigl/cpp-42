@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 19:22:16 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 19:46:30 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 20:02:44 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(
   return *this;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &b) {
+void ShrubberyCreationForm::execute(const Bureaucrat &b) const {
   AForm::execute(b);
   const std::string filename = target_ + "_shrubbery";
   std::ofstream ofs(filename.c_str(), std::ios::out | std::ios::app);

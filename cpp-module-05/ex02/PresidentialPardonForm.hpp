@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 15:23:43 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 15:47:28 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 20:01:17 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class PresidentialPardonForm : public AForm {
 
   PresidentialPardonForm &operator=(const PresidentialPardonForm &);
 
-  void execute(const Bureaucrat &);
+  void execute(const Bureaucrat &) const;
 
  private:
   PresidentialPardonForm();

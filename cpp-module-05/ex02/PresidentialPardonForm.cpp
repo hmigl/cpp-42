@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 15:32:17 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 16:18:24 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 20:01:26 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(
   return *this;
 }
 
-void PresidentialPardonForm::execute(const Bureaucrat &b) {
+void PresidentialPardonForm::execute(const Bureaucrat &b) const {
   AForm::execute(b);
   std::cout << target_ << " has been pardoned by Zaphod Beeblebrox\n";
 }

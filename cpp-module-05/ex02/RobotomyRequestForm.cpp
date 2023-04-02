@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:24:56 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 16:31:55 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 20:02:24 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(
   return *this;
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat &b) {
+void RobotomyRequestForm::execute(const Bureaucrat &b) const {
   AForm::execute(b);
   srand(time(0));    // Seed the random number generator with the current time
   if (rand() % 2) {  // Generate a random number between 0 and 1

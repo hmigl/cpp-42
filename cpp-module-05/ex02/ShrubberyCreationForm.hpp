@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 19:20:31 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 19:35:27 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 20:02:34 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ShrubberyCreationForm : public AForm {
 
   ShrubberyCreationForm &operator=(const ShrubberyCreationForm &);
 
-  void execute(const Bureaucrat &);
+  void execute(const Bureaucrat &) const;
 
  private:
   ShrubberyCreationForm();
