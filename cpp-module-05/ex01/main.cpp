@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 18:13:52 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 12:12:51 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 12:18:56 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,35 +48,30 @@ const std::string &FormName = "Generic form";
 //   std::cout << std::endl;
 // }
 
-// void shouldThrowGradeTooHighException() {
-//   std::cout << "shouldThrowGradeTooHighException\n";
-//
-//   try {
-//     std::cout << "creating default bureaucrat and trying to increment grade "
-//                  "untill 0\n";
-//     Bureaucrat b;
-//     while (b.getGrade() != 0) {
-//       b.incrementGrade();
-//     }
-//   } catch (Bureaucrat::GradeTooHighException &e) {
-//     std::cout << e.what() << std::endl;
-//   }
-//
-//   try {
-//     std::cout << "creating bureaucrat with grade higher than 1\n";
-//     Bureaucrat b(Name, 0);
-//   } catch (Bureaucrat::GradeTooHighException &e) {
-//     std::cout << e.what() << std::endl;
-//   }
-//   std::cout << std::endl;
-// }
+void shouldThrowGradeTooHighException() {
+  std::cout << "shouldThrowGradeTooHighException\n";
+
+  try {
+    std::cout << "creating form with requiredGradeToExecute greater than 1\n";
+    Form f(FormName, 149, 0);
+  } catch (Form::GradeTooHighException &e) {
+    std::cout << e.what() << std::endl;
+  }
+
+  try {
+    std::cout << "creating form with requiredGradeToSign greater than 1\n";
+    Form f(FormName, 0, 42);
+  } catch (Form::GradeTooHighException &e) {
+    std::cout << e.what() << std::endl;
+  }
+  std::cout << std::endl;
+}
 
 void shouldThrowGradeTooLowException() {
   std::cout << "shouldThrowGradeTooLowException\n";
 
   try {
-    std::cout
-        << "creating form with requiredGradeToExecute lower than 150\n";
+    std::cout << "creating form with requiredGradeToExecute lower than 150\n";
     Form f(FormName, 149, 151);
   } catch (Form::GradeTooLowException &e) {
     std::cout << e.what() << std::endl;
@@ -93,7 +88,7 @@ void shouldThrowGradeTooLowException() {
 
 int main() {
   shouldThrowGradeTooLowException();
-  // shouldThrowGradeTooHighException();
+  shouldThrowGradeTooHighException();
   // shouldIncrementGrade();
   // shouldDecrementGrade();
   return 0;
