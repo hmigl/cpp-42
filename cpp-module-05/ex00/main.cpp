@@ -6,17 +6,30 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 18:13:52 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 09:26:20 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 09:33:57 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cassert>
 #include <iostream>
 
 #include "./Bureaucrat.hpp"
 
 const std::string &Name = "Beauro Crat";
 
-void shouldThrowGradeTooHighExceptionTest() {
+void shouldIncrementGrade() {
+  std::cout << "shouldIncrementGrade\n";
+
+  std::cout << "creating default bureaucrat with grade == 150\n";
+  Bureaucrat b;
+  for (int i = 0; i < 10; ++i) {
+    b.incrementGrade();
+  }
+  std::cout << "asserting that grade == 140\n";
+  assert(b.getGrade() == 140);
+}
+
+void shouldThrowGradeTooHighException() {
   std::cout << "shouldThrowGradeTooHighException\n";
 
   try {
@@ -36,9 +49,10 @@ void shouldThrowGradeTooHighExceptionTest() {
   } catch (Bureaucrat::GradeTooHighException &e) {
     std::cout << e.what() << std::endl;
   }
+  std::cout << std::endl;
 }
 
-void shouldThrowGradeTooLowExceptionTest() {
+void shouldThrowGradeTooLowException() {
   std::cout << "shouldThrowGradeTooLowException\n";
 
   try {
@@ -59,7 +73,8 @@ void shouldThrowGradeTooLowExceptionTest() {
 }
 
 int main() {
-  shouldThrowGradeTooLowExceptionTest();
-  shouldThrowGradeTooHighExceptionTest();
+  shouldThrowGradeTooLowException();
+  shouldThrowGradeTooHighException();
+  shouldIncrementGrade();
   return 0;
 }
