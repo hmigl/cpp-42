@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 18:13:52 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 09:37:39 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 09:44:57 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ void shouldDecrementGrade() {
 
   std::cout << "creating bureaucrat with grade == 42\n";
   Bureaucrat b(Name, 42);
+  std::cout << "( " << b << " )\n";
   for (int i = 0; i < 10; ++i) {
     b.decrementGrade();
   }
   std::cout << "asserting that grade == 52\n";
+  std::cout << "( " << b << " )\n";
   assert(b.getGrade() == 52);
 }
 
@@ -34,11 +36,13 @@ void shouldIncrementGrade() {
 
   std::cout << "creating default bureaucrat with grade == 150\n";
   Bureaucrat b;
+  std::cout << "( " << b << " )\n";
   for (int i = 0; i < 10; ++i) {
     b.incrementGrade();
   }
   std::cout << "asserting that grade == 140\n";
   assert(b.getGrade() == 140);
+  std::cout << "( " << b << " )\n";
   std::cout << std::endl;
 }
 
