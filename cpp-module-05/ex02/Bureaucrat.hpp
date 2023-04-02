@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:18:58 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 14:19:27 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 16:52:09 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Bureaucrat {
   void incrementGrade();
   void decrementGrade();
   void signForm(AForm &);
+  void executeForm(const AForm &);
 
   const std::string &getName() const;
   unsigned int getGrade() const;
