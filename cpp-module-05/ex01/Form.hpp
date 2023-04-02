@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 10:01:56 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 11:05:24 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 11:31:54 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <string>
 
 #include "./Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form {
  public:
