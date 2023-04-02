@@ -6,12 +6,14 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:20:54 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 20:02:14 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 20:11:02 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <cstdlib>
+#include <ctime>
 #include <string>
 
 #include "./AForm.hpp"
