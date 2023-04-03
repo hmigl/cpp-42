@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 19:50:56 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/02 20:36:42 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/02 20:42:50 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,24 @@
 #include "./PresidentialPardonForm.hpp"
 #include "./RobotomyRequestForm.hpp"
 #include "./ShrubberyCreationForm.hpp"
+
+void shouldValidateShrubberyCreationForm() {
+  std::cout << "shouldValidateShrubberyCreationForm\n";
+
+  ShrubberyCreationForm form("home");
+  std::cout << form << std::endl;
+  assert(form.getName() == "ShrubberyCreationForm");
+  assert(form.getRequiredGradeToSign() == 145);
+  assert(form.getRequiredGradeToExecute() == 137);
+  try {
+    Bureaucrat b("Beauro Crat", 125);
+    std::cout << b << std::endl;
+    form.beSigned(b);
+    form.execute(b);
+  } catch (const std::exception &e) {
+    std::cout << e.what() << std::endl;
+  }
+}
 
 void shouldValidateRobotomyRequestForm() {
   std::cout << "shouldValidateRobotomyRequestForm\n";
@@ -32,6 +50,7 @@ void shouldValidateRobotomyRequestForm() {
   } catch (const std::exception &e) {
     std::cout << e.what() << std::endl;
   }
+  std::cout << std::endl;
 }
 
 void shouldValidatePresidentialPardonForm() {
@@ -56,5 +75,6 @@ void shouldValidatePresidentialPardonForm() {
 int main() {
   shouldValidatePresidentialPardonForm();
   shouldValidateRobotomyRequestForm();
+  shouldValidateShrubberyCreationForm();
   return 0;
 }
