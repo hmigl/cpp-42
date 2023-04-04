@@ -8,7 +8,7 @@ LDLIBS   +=
 CXX      := c++
 
 SRCS     := main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
-	    RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+	    RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 OBJS     := $(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
 DEPS     := $(OBJS:.o=.d)
 NAME     := bureaucrat
