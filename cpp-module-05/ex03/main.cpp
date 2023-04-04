@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 19:50:56 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/04 07:21:39 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/04 07:26:59 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,21 @@
 #include "./RobotomyRequestForm.hpp"
 #include "./ShrubberyCreationForm.hpp"
 
-// void shouldExecuteForm() {
-//   std::cout << "shouldExecuteForm\n";
-//
-//   Bureaucrat b("Beauro Crat", 1);
-//   std::cout << b << std::endl;
-//   RobotomyRequestForm form("ChatGPT");
-//   b.signForm(form);
-//   b.executeForm(form);
-// }
+void shouldNotCreateForm() {
+  try {
+    Intern intern;
+    AForm *form = intern.makeForm("vscode is better than vim (lol)", "js dev");
+    std::cout << form << std::endl;
+  } catch (const std::exception &e) {
+    std::cout << e.what();
+  }
+}
 
 void shouldValidateShrubberyCreationForm() {
   std::cout << "shouldValidateShrubberyCreationForm\n";
 
   Intern intern;
   AForm *form = intern.makeForm("shrubbery creation", "hoem");
-  std::cout << form << std::endl;
   assert(form->getName() == "ShrubberyCreationForm");
   assert(form->getRequiredGradeToSign() == 145);
   assert(form->getRequiredGradeToExecute() == 137);
@@ -53,7 +52,6 @@ void shouldValidateRobotomyRequestForm() {
 
   Intern intern;
   AForm *form = intern.makeForm("robotomy request", "Jarvis");
-  std::cout << form << std::endl;
   assert(form->getName() == "RobotomyRequestForm");
   assert(form->getRequiredGradeToSign() == 72);
   assert(form->getRequiredGradeToExecute() == 45);
@@ -74,7 +72,6 @@ void shouldValidatePresidentialPardonForm() {
 
   Intern intern;
   AForm *form = intern.makeForm("presidential pardon", "Rodion Raskolnikov");
-  std::cout << form << std::endl;
   assert(form->getName() == "PresidentialPardonForm");
   assert(form->getRequiredGradeToSign() == 25);
   assert(form->getRequiredGradeToExecute() == 5);
@@ -94,5 +91,6 @@ int main() {
   shouldValidatePresidentialPardonForm();
   shouldValidateRobotomyRequestForm();
   shouldValidateShrubberyCreationForm();
+  shouldNotCreateForm();
   return 0;
 }
