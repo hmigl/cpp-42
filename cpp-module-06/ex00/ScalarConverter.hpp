@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 11:59:28 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/09 12:36:39 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/09 13:09:42 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class ScalarConverter {
   static const int ScalarTypes = 4;
 
   char charRepr_;
-  int intRepr_;
+  long intRepr_;
   float floatRepr_;
   double doubleRepr_;
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
+/*   Updated: 2023/04/09 13:17:06 by hmigl            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter() {}
@@ -50,7 +62,12 @@ bool ScalarConverter::isFloat(const std::string &) const {}
 
 bool ScalarConverter::isDouble(const std::string &) const {}
 
-void ScalarConverter::castChar(const std::string &literal) {}
+void ScalarConverter::castChar(const std::string &literal) {
+  charRepr_ = literal[0];
+  intRepr_ = static_cast<long>(charRepr_);
+  floatRepr_ = static_cast<float>(charRepr_);
+  doubleRepr_ = static_cast<double>(charRepr_);
+}
 
 void ScalarConverter::castInt(const std::string &literal) {}
 
