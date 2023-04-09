@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 11:59:28 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/09 12:09:18 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/09 12:36:39 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class ScalarConverter {
  private:
   ScalarConverter();
 
+  static const int ScalarTypes = 4;
+
   char charRepr_;
   int intRepr_;
   float floatRepr_;
@@ -36,4 +38,8 @@ class ScalarConverter {
   bool isInt(const std::string &) const;
   bool isFloat(const std::string &) const;
   bool isDouble(const std::string &) const;
+  void castChar(const std::string &);
+  void castInt(const std::string &);
+  void castFloat(const std::string &);
+  void castDouble(const std::string &);
 };

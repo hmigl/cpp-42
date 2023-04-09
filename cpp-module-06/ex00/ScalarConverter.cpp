@@ -24,14 +24,17 @@ void ScalarConverter::convert(const std::string &literal) {
 }
 
 void ScalarConverter::toScalarTypes(const std::string &literal) {
-  bool (ScalarConverter::*isScalarType[4])(const std::string &)
+  bool (ScalarConverter::*isScalarType[ScalarTypes])(const std::string &)
       const = {&ScalarConverter::isChar, &ScalarConverter::isInt,
                &ScalarConverter::isFloat, &ScalarConverter::isDouble};
-  // void (ScalarConverter::*castScalarType[4])(const std::string &) = {};
 
-  for (int i = 0; i < 4; ++i) {
+  void (ScalarConverter::*castScalarType[ScalarTypes])(const std::string &) = {
+      &ScalarConverter::castChar, &ScalarConverter::castInt,
+      &ScalarConverter::castFloat, &ScalarConverter::castDouble};
+
+  for (int i = 0; i < ScalarTypes; ++i) {
     if ((this->*isScalarType[i])(literal)) {
-      // (this->*castScalarType[i])(literal);
+      (this->*castScalarType[i])(literal);
       return;
     }
   }
@@ -46,3 +49,11 @@ bool ScalarConverter::isInt(const std::string &) const {}
 bool ScalarConverter::isFloat(const std::string &) const {}
 
 bool ScalarConverter::isDouble(const std::string &) const {}
+
+void ScalarConverter::castChar(const std::string &literal) {}
+
+void ScalarConverter::castInt(const std::string &literal) {}
+
+void ScalarConverter::castFloat(const std::string &literal) {}
+
+void ScalarConverter::castDouble(const std::string &literal) {}
