@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/09 13:41:05 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/09 14:04:28 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,18 @@ bool ScalarConverter::isChar(const std::string &literal) const {
   return literal.length() == 1 && isdigit(literal[0]);
 }
 
-bool ScalarConverter::isInt(const std::string &) const {}
+bool ScalarConverter::isInt(const std::string &literal) const {
+  int i = 0;
+  if (literal[i] == '-' || literal[i] == '+') {
+    ++i;
+  }
+  for (; i < literal.length(); ++i) {
+    if (!isdigit(literal[i])) {
+      return false;
+    }
+  }
+  return true;
+}
 
 bool ScalarConverter::isFloat(const std::string &) const {}
 
