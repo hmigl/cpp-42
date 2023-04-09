@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/09 14:04:28 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/09 15:25:37 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void ScalarConverter::convert(const std::string &literal) {
 }
 
 void ScalarConverter::toScalarTypes(const std::string &literal) {
+  if (literal.empty()) {
+    return;
+  }
+
   bool (ScalarConverter::*isScalarType[ScalarTypes])(const std::string &)
       const = {&ScalarConverter::isChar, &ScalarConverter::isInt,
                &ScalarConverter::isFloat, &ScalarConverter::isDouble};
@@ -53,7 +57,7 @@ void ScalarConverter::toScalarTypes(const std::string &literal) {
 }
 
 bool ScalarConverter::isChar(const std::string &literal) const {
-  return literal.length() == 1 && isdigit(literal[0]);
+  return literal.length() == 1 && isascii(literal[0]);
 }
 
 bool ScalarConverter::isInt(const std::string &literal) const {
@@ -69,7 +73,25 @@ bool ScalarConverter::isInt(const std::string &literal) const {
   return true;
 }
 
-bool ScalarConverter::isFloat(const std::string &) const {}
+bool ScalarConverter::isFloat(const std::string &literal) const {
+  int pos = literal.find_first_of(".");
+  if (pos == std::string::npos) {
+    return false;
+  }
+  if (literal.back() != 'f') {
+    return false;
+  }
+  if ((literal[0] == '-' || literal[0] == '+') &&
+      literal.find_first_of("+-", 1) != std::string::npos) {
+    return false;
+  }
+  pos = literal.find_first_not_of("-+", 1);
+  if (pos == std::string::npos) {
+    return false;
+  }
+  pos = literal.find_first_not_of("0123456789.f", pos + 1);
+  return pos == std::string::npos;
+}
 
 bool ScalarConverter::isDouble(const std::string &) const {}
 
