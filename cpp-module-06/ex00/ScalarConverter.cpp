@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/09 15:33:32 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/10 11:43:20 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,11 @@ void ScalarConverter::castInt(const std::string &literal) {
   doubleRepr_ = static_cast<double>(intRepr_);
 }
 
-void ScalarConverter::castFloat(const std::string &literal) { (void)literal; }
+void ScalarConverter::castFloat(const std::string &literal) {
+  floatRepr_ = std::atof(literal.c_str());
+  charRepr_ = static_cast<unsigned char>(floatRepr_);
+  intRepr_ = static_cast<int>(floatRepr_);
+  doubleRepr_ = static_cast<double>(floatRepr_);
+}
 
 void ScalarConverter::castDouble(const std::string &literal) { (void)literal; }
