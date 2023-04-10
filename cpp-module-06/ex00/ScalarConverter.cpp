@@ -6,13 +6,14 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/10 14:23:24 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/10 14:29:43 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter() {}
+ScalarConverter::ScalarConverter()
+    : charRepr_(0), intRepr_(0), floatRepr_(0), doubleRepr_(0) {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other) {
   *this = other;
