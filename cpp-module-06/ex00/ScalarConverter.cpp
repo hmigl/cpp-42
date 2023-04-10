@@ -149,7 +149,11 @@ void ScalarConverter::castDouble(const std::string &literal) {
 }
 
 void ScalarConverter::display() {
-  std::cout << "char:\t" << charRepr_ << std::endl;
+  if (isprint(charRepr_)) {
+    std::cout << "char:\t" << charRepr_ << std::endl;
+  } else {
+    std::cout << "char:\tnon displayable\n";
+  }
   std::cout << "int:\t" << intRepr_ << std::endl;
   std::cout << "float:\t" << std::fixed << std::setprecision(1) << floatRepr_
             << "f" << std::endl;
