@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/10 11:43:20 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/10 11:57:04 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,22 @@ bool ScalarConverter::isFloat(const std::string &literal) const {
   return pos == std::string::npos;
 }
 
-bool ScalarConverter::isDouble(const std::string &) const { return false; }
+bool ScalarConverter::isDouble(const std::string &literal) const {
+  size_t pos = literal.find_first_of(".");
+  if (pos == std::string::npos) {
+    return false;
+  }
+  if ((literal[0] == '-' || literal[0] == '+') &&
+      literal.find_first_of("+-", 1) != std::string::npos) {
+    return false;
+  }
+  pos = literal.find_first_not_of("-+", 1);
+  if (pos == std::string::npos) {
+    return false;
+  }
+  pos = literal.find_first_not_of("0123456789.", pos + 1);
+  return pos == std::string::npos;
+}
 
 void ScalarConverter::castChar(const std::string &literal) {
   charRepr_ = literal[0];
