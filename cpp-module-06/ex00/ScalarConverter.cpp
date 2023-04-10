@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/09 15:25:37 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/09 15:33:32 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ bool ScalarConverter::isChar(const std::string &literal) const {
 }
 
 bool ScalarConverter::isInt(const std::string &literal) const {
-  int i = 0;
+  size_t i = 0;
   if (literal[i] == '-' || literal[i] == '+') {
     ++i;
   }
@@ -74,11 +74,11 @@ bool ScalarConverter::isInt(const std::string &literal) const {
 }
 
 bool ScalarConverter::isFloat(const std::string &literal) const {
-  int pos = literal.find_first_of(".");
+  size_t pos = literal.find_first_of(".");
   if (pos == std::string::npos) {
     return false;
   }
-  if (literal.back() != 'f') {
+  if (literal[literal.length() - 1] != 'f') {
     return false;
   }
   if ((literal[0] == '-' || literal[0] == '+') &&
@@ -93,7 +93,7 @@ bool ScalarConverter::isFloat(const std::string &literal) const {
   return pos == std::string::npos;
 }
 
-bool ScalarConverter::isDouble(const std::string &) const {}
+bool ScalarConverter::isDouble(const std::string &) const { return false; }
 
 void ScalarConverter::castChar(const std::string &literal) {
   charRepr_ = literal[0];
@@ -115,6 +115,6 @@ void ScalarConverter::castInt(const std::string &literal) {
   doubleRepr_ = static_cast<double>(intRepr_);
 }
 
-void ScalarConverter::castFloat(const std::string &literal) {}
+void ScalarConverter::castFloat(const std::string &literal) { (void)literal; }
 
-void ScalarConverter::castDouble(const std::string &literal) {}
+void ScalarConverter::castDouble(const std::string &literal) { (void)literal; }
