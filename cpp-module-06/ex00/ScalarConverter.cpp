@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/10 11:57:04 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/10 14:23:24 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
 void ScalarConverter::convert(const std::string &literal) {
   ScalarConverter sc;
   sc.toScalarTypes(literal);
+  sc.display();
 }
 
 void ScalarConverter::toScalarTypes(const std::string &literal) {
@@ -143,4 +144,13 @@ void ScalarConverter::castDouble(const std::string &literal) {
   charRepr_ = static_cast<unsigned char>(doubleRepr_);
   intRepr_ = static_cast<int>(doubleRepr_);
   floatRepr_ = static_cast<float>(doubleRepr_);
+}
+
+void ScalarConverter::display() {
+  std::cout << "char:\t" << charRepr_ << std::endl;
+  std::cout << "int:\t" << intRepr_ << std::endl;
+  std::cout << "float:\t" << std::fixed << std::setprecision(1) << floatRepr_
+            << "f" << std::endl;
+  std::cout << "double:\t" << std::fixed << std::setprecision(1) << doubleRepr_
+            << std::endl;
 }

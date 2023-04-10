@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 11:59:28 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/09 13:37:36 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/10 14:21:23 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include <cctype>
 #include <cstdlib>
+#include <iomanip>
+#include <iostream>
 #include <limits>
 #include <stdexcept>
 #include <string>
@@ -37,6 +39,7 @@ class ScalarConverter {
   double doubleRepr_;
 
   void toScalarTypes(const std::string &);
+  void display();
   bool isChar(const std::string &) const;
   bool isInt(const std::string &) const;
   bool isFloat(const std::string &) const;
