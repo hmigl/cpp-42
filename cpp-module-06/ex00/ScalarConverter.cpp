@@ -57,7 +57,8 @@ void ScalarConverter::toScalarTypes(const std::string &literal) {
 }
 
 bool ScalarConverter::isChar(const std::string &literal) const {
-  return literal.length() == 1 && isascii(literal[0]);
+  return literal.length() == 1 && isascii(literal.at(0)) &&
+         !isdigit(literal.at(0));
 }
 
 bool ScalarConverter::isInt(const std::string &literal) const {
@@ -112,7 +113,7 @@ bool ScalarConverter::isDouble(const std::string &literal) const {
 
 void ScalarConverter::castChar(const std::string &literal) {
   charRepr_ = literal[0];
-  intRepr_ = static_cast<long>(charRepr_);
+  intRepr_ = static_cast<int>(charRepr_);
   floatRepr_ = static_cast<float>(charRepr_);
   doubleRepr_ = static_cast<double>(charRepr_);
 }
