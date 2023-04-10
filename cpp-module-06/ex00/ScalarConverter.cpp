@@ -55,6 +55,7 @@ void ScalarConverter::toScalarTypes(const std::string &literal) {
       return;
     }
   }
+  throw std::runtime_error("Cannot convert literal. Enter a valid scalar type");
 }
 
 bool ScalarConverter::isChar(const std::string &literal) const {
