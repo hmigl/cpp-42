@@ -137,4 +137,9 @@ void ScalarConverter::castFloat(const std::string &literal) {
   doubleRepr_ = static_cast<double>(floatRepr_);
 }
 
-void ScalarConverter::castDouble(const std::string &literal) { (void)literal; }
+void ScalarConverter::castDouble(const std::string &literal) {
+  doubleRepr_ = std::strtod(literal.c_str(), NULL);
+  charRepr_ = static_cast<unsigned char>(doubleRepr_);
+  intRepr_ = static_cast<int>(doubleRepr_);
+  floatRepr_ = static_cast<float>(doubleRepr_);
+}
