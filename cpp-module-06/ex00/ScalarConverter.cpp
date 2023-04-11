@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/11 07:57:55 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/11 08:32:59 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,9 @@ bool ScalarConverter::isInt(const std::string &literal) const {
 }
 
 bool ScalarConverter::isFloat(const std::string &literal) const {
+  if (literal == "inff" || literal == "-inff" || literal == "nanf") {
+    return true;
+  }
   size_t pos = literal.find_first_of(".");
   if (pos == std::string::npos) {
     return false;
@@ -98,6 +101,9 @@ bool ScalarConverter::isFloat(const std::string &literal) const {
 }
 
 bool ScalarConverter::isDouble(const std::string &literal) const {
+  if (literal == "inf" || literal == "-inf" || literal == "nan") {
+    return true;
+  }
   size_t pos = literal.find_first_of(".");
   if (pos == std::string::npos) {
     return false;
@@ -149,12 +155,17 @@ void ScalarConverter::castDouble(const std::string &literal) {
 }
 
 void ScalarConverter::display() {
-  if (isprint(charRepr_)) {
-    std::cout << "char:\t" << charRepr_ << std::endl;
+  if (std::isinf(doubleRepr_) || std::isnan(doubleRepr_)) {
+    std::cout << "char:\timpossible\n";
+    std::cout << "int:\timpossible\n";
   } else {
-    std::cout << "char:\tnon displayable\n";
+    if (isprint(charRepr_)) {
+      std::cout << "char:\t" << charRepr_ << std::endl;
+    } else {
+      std::cout << "char:\tnon displayable\n";
+    }
+    std::cout << "int:\t" << intRepr_ << std::endl;
   }
-  std::cout << "int:\t" << intRepr_ << std::endl;
   std::cout << "float:\t" << std::fixed << std::setprecision(1) << floatRepr_
             << "f" << std::endl;
   std::cout << "double:\t" << std::fixed << std::setprecision(1) << doubleRepr_

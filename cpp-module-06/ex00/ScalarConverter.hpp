@@ -6,13 +6,14 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 11:59:28 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/10 14:21:23 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/11 08:28:59 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <cctype>
+#include <cmath>
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
