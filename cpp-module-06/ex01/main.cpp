@@ -6,10 +6,11 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 10:39:34 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/11 11:01:56 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/11 14:02:12 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cassert>
 #include <iostream>
 
 #include "./Serializer.hpp"
@@ -46,6 +47,11 @@ int main() {
 
   uintptr_t serializedData = Serializer::serialize(data);
   Data *deserializedData = Serializer::deserialize(serializedData);
+  /*
+   * Ensure the return value of deserialize() compares equal to the original
+   * pointer:
+   */
+  assert(data == deserializedData);
 
   std::cout << "After serialization: \n";
   std::cout << "lyrics: " << deserializedData->lyrics << std::endl;
