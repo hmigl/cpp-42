@@ -6,14 +6,18 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/11 08:32:59 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/11 09:20:06 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter()
-    : charRepr_(0), intRepr_(0), floatRepr_(0), doubleRepr_(0) {}
+unsigned char ScalarConverter::charRepr_ = 0;
+long ScalarConverter::intRepr_ = 0;
+float ScalarConverter::floatRepr_ = 0;
+double ScalarConverter::doubleRepr_ = 0;
+
+ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::ScalarConverter(const ScalarConverter &other) {
   *this = other;
@@ -32,39 +36,32 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
 }
 
 void ScalarConverter::convert(const std::string &literal) {
-  ScalarConverter sc;
-  sc.toScalarTypes(literal);
-  sc.display();
-}
-
-void ScalarConverter::toScalarTypes(const std::string &literal) {
   if (literal.empty()) {
     return;
   }
 
-  bool (ScalarConverter::*isScalarType[ScalarTypes])(const std::string &)
-      const = {&ScalarConverter::isChar, &ScalarConverter::isInt,
-               &ScalarConverter::isFloat, &ScalarConverter::isDouble};
+  bool (*isScalarType[ScalarTypes])(const std::string &) = {
+      &isChar, &isInt, &isFloat, &isDouble};
 
-  void (ScalarConverter::*castScalarType[ScalarTypes])(const std::string &) = {
-      &ScalarConverter::castChar, &ScalarConverter::castInt,
-      &ScalarConverter::castFloat, &ScalarConverter::castDouble};
+  void (*castScalarType[ScalarTypes])(const std::string &) = {
+      &castChar, &castInt, &castFloat, &castDouble};
 
   for (int i = 0; i < ScalarTypes; ++i) {
-    if ((this->*isScalarType[i])(literal)) {
-      (this->*castScalarType[i])(literal);
+    if ((*isScalarType[i])(literal)) {
+      (*castScalarType[i])(literal);
+      ScalarConverter::display();
       return;
     }
   }
   throw std::runtime_error("Cannot convert literal. Enter a valid scalar type");
 }
 
-bool ScalarConverter::isChar(const std::string &literal) const {
+bool ScalarConverter::isChar(const std::string &literal) {
   return literal.length() == 1 && isascii(literal.at(0)) &&
          !isdigit(literal.at(0));
 }
 
-bool ScalarConverter::isInt(const std::string &literal) const {
+bool ScalarConverter::isInt(const std::string &literal) {
   size_t i = 0;
   if (literal[i] == '-' || literal[i] == '+') {
     ++i;
@@ -77,7 +74,7 @@ bool ScalarConverter::isInt(const std::string &literal) const {
   return true;
 }
 
-bool ScalarConverter::isFloat(const std::string &literal) const {
+bool ScalarConverter::isFloat(const std::string &literal) {
   if (literal == "inff" || literal == "-inff" || literal == "nanf") {
     return true;
   }
@@ -100,7 +97,7 @@ bool ScalarConverter::isFloat(const std::string &literal) const {
   return pos == std::string::npos;
 }
 
-bool ScalarConverter::isDouble(const std::string &literal) const {
+bool ScalarConverter::isDouble(const std::string &literal) {
   if (literal == "inf" || literal == "-inf" || literal == "nan") {
     return true;
   }

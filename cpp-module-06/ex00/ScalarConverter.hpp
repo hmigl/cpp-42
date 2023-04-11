@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 11:59:28 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/11 08:28:59 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/11 09:20:52 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,29 @@
 
 class ScalarConverter {
  public:
-  ScalarConverter(const ScalarConverter &);
   ~ScalarConverter();
-  ScalarConverter &operator=(const ScalarConverter &);
 
   static void convert(const std::string &);
 
  private:
   ScalarConverter();
+  ScalarConverter(const ScalarConverter &);
+  ScalarConverter &operator=(const ScalarConverter &);
 
   static const int ScalarTypes = 4;
 
-  unsigned char charRepr_;
-  long intRepr_;
-  float floatRepr_;
-  double doubleRepr_;
+  static unsigned char charRepr_;
+  static long intRepr_;
+  static float floatRepr_;
+  static double doubleRepr_;
 
-  void toScalarTypes(const std::string &);
-  void display();
-  bool isChar(const std::string &) const;
-  bool isInt(const std::string &) const;
-  bool isFloat(const std::string &) const;
-  bool isDouble(const std::string &) const;
-  void castChar(const std::string &);
-  void castInt(const std::string &);
-  void castFloat(const std::string &);
-  void castDouble(const std::string &);
+  static void display();
+  static bool isChar(const std::string &);
+  static bool isInt(const std::string &);
+  static bool isFloat(const std::string &);
+  static bool isDouble(const std::string &);
+  static void castChar(const std::string &);
+  static void castInt(const std::string &);
+  static void castFloat(const std::string &);
+  static void castDouble(const std::string &);
 };
