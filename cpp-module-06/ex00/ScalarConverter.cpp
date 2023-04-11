@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 13:17:05 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/10 14:29:43 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/11 07:57:55 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ bool ScalarConverter::isFloat(const std::string &literal) const {
   if (literal[literal.length() - 1] != 'f') {
     return false;
   }
-  if ((literal[0] == '-' || literal[0] == '+') &&
+  if ((literal.at(0) == '-' || literal.at(0) == '+') &&
       literal.find_first_of("+-", 1) != std::string::npos) {
     return false;
   }
@@ -102,7 +102,7 @@ bool ScalarConverter::isDouble(const std::string &literal) const {
   if (pos == std::string::npos) {
     return false;
   }
-  if ((literal[0] == '-' || literal[0] == '+') &&
+  if ((literal.at(0) == '-' || literal.at(0) == '+') &&
       literal.find_first_of("+-", 1) != std::string::npos) {
     return false;
   }
@@ -115,7 +115,7 @@ bool ScalarConverter::isDouble(const std::string &literal) const {
 }
 
 void ScalarConverter::castChar(const std::string &literal) {
-  charRepr_ = literal[0];
+  charRepr_ = literal.at(0);
   intRepr_ = static_cast<int>(charRepr_);
   floatRepr_ = static_cast<float>(charRepr_);
   doubleRepr_ = static_cast<double>(charRepr_);
