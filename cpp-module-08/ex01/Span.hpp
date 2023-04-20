@@ -6,12 +6,13 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 09:59:48 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/20 10:10:59 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/20 12:02:55 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <stdexcept>
 #include <vector>
 
 class Span {
@@ -21,15 +22,14 @@ class Span {
   Span &operator=(const Span &);
   ~Span();
 
-  void addNumber(unsigned int);
-  template <typename InputIt>
-  void insertRange(InputIt first, InputIt last);
+  void addNumber(int);
+  void insertRange(std::vector<int>::iterator, std::vector<int>::iterator);
   unsigned int shortestSpan() const;
   unsigned int longestSpan() const;
 
  private:
   Span();
 
-  std::vector<unsigned int> elements_;
+  std::vector<int> elements_;
   unsigned int maxCapacity_;
 };
