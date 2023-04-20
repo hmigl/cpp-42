@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 08:44:14 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/20 08:44:15 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/20 09:09:22 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include <stdexcept>
 
 template <typename T>
-typename T::const_iterator easyfind(const T &container, int val) {
+typename T::const_iterator easyfind(const T &containerOfInts, int val) {
   typename T::const_iterator it =
-      std::find(container.begin(), container.end(), val);
+      std::find(containerOfInts.begin(), containerOfInts.end(), val);
 
-  if (it != container.end()) {
+  if (it != containerOfInts.end()) {
     return it;
   }
   throw std::invalid_argument("value was not found");
