@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:18 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/20 10:11:02 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/20 10:27:40 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ Span &Span::operator=(const Span &other) {
   return *this;
 }
 
-void Span::addNumber(unsigned int) {}
+void Span::addNumber(unsigned int num) {
+  if (elements_.size() + 1 <= maxCapacity_) {
+    elements_.push_back(num);
+  } else {
+    throw std::length_error("Adding one more number exceeds max capacity");
+  }
+}
 
 template <typename InputIt>
 void Span::insertRange(InputIt first, InputIt last) {}
