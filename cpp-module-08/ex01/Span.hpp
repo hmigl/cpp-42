@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 09:59:48 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/20 09:59:49 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/20 10:10:59 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Span {
   Span &operator=(const Span &);
   ~Span();
 
-  void addNumber();
+  void addNumber(unsigned int);
   template <typename InputIt>
   void insertRange(InputIt first, InputIt last);
   unsigned int shortestSpan() const;
