@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:18 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/20 12:04:32 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/20 13:51:09 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,22 @@ void Span::insertRange(std::vector<int>::iterator first,
   elements_.insert(elements_.end(), first, last);
 }
 
-unsigned int Span::shortestSpan() const { return 0; }
+unsigned int Span::shortestSpan() const {
+  if (elements_.size() < 2) {
+    throw std::length_error(
+        "There aren't enough elements. No span can be found");
+  }
+
+  std::vector<int> sortedElements(elements_);
+  std::sort(sortedElements.begin(), sortedElements.end());
+
+  int shortest = std::numeric_limits<int>::max();
+  for (std::vector<int>::iterator it = sortedElements.begin() + 1;
+       it != sortedElements.end(); ++it) {
+    shortest = std::min(shortest, *it - *(it - 1));
+  }
+  return shortest;
+}
 
 unsigned int Span::longestSpan() const { return 0; }
 
