@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 09:59:48 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/20 13:40:08 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/21 09:59:55 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ class Span {
 
   void addNumber(int);
   void insertRange(std::vector<int>::iterator, std::vector<int>::iterator);
-  unsigned int shortestSpan() const;
-  unsigned int longestSpan() const;
+  int shortestSpan() const;
+  int longestSpan() const;
 
  private:
   Span();
