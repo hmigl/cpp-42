@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:18 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/20 14:06:12 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/21 09:56:30 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ unsigned int Span::longestSpan() const {
   std::vector<int> sortedElements(elements_);
   std::sort(sortedElements.begin(), sortedElements.end());
 
-  return sortedElements.end() - sortedElements.begin();
+  return sortedElements.back() - sortedElements.front();
 }
 
 Span::~Span() {}
