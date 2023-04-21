@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:01:18 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/20 13:51:09 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/20 14:06:12 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,16 @@ unsigned int Span::shortestSpan() const {
   return shortest;
 }
 
-unsigned int Span::longestSpan() const { return 0; }
+unsigned int Span::longestSpan() const {
+  if (elements_.size() < 2) {
+    throw std::length_error(
+        "There aren't enough elements. No span can be found");
+  }
+
+  std::vector<int> sortedElements(elements_);
+  std::sort(sortedElements.begin(), sortedElements.end());
+
+  return sortedElements.end() - sortedElements.begin();
+}
 
 Span::~Span() {}
