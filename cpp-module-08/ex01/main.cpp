@@ -6,13 +6,26 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:11:09 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/20 13:20:36 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/20 13:57:18 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cassert>
 #include <iostream>
 
 #include "./Span.hpp"
+
+void shouldGetShortestSpan() {
+  Span s = Span(5);
+
+  s.addNumber(6);
+  s.addNumber(3);
+  s.addNumber(17);
+  s.addNumber(9);
+  s.addNumber(11);
+  assert(s.shortestSpan() == 2);
+  std::cout << "should get shortest span [OK]\n";
+}
 
 void shouldNotAddSequenceThatExceedsCapacity() {
   std::vector<int> v;
@@ -63,5 +76,6 @@ int main() {
   shouldNotAddNumber();
   shouldAddSequenceOfElements();
   shouldNotAddSequenceThatExceedsCapacity();
+  shouldGetShortestSpan();
   return 0;
 }
