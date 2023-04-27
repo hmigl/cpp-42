@@ -6,13 +6,15 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:52:29 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/27 10:40:54 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/27 10:49:30 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <fstream>
 #include <map>
+#include <stdexcept>
 #include <string>
 
 class BitcoinExchange {
