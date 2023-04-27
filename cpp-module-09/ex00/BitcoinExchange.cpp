@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:57:10 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/27 11:52:28 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/27 16:18:18 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,34 @@ void BitcoinExchange::eval_from_amount_history_file(
 
   if (ifs.peek() == std::ifstream::traits_type::eof()) {
     throw std::invalid_argument(amount_history_file + ": empty file");
+  }
+
+  std::string line;
+  while (std::getline(ifs, line)) {
+    if (line.empty()) {
+      continue;
+    }
+
+    size_t pos = line.find("|");
+    if (pos == std::string::npos) {
+      std::cout << "Error: bad input => " << line << std::endl;
+      continue;
+    }
+
+    std::string date_str = line.substr(0, pos);
+    date_str.erase(remove_if(date_str.begin(), date_str.end(), isspace),
+                   date_str.end());
+    if (date_str.find_first_not_of("0123456789-") != std::string::npos &&
+        date_str != "date") {
+      std::cout << "Error: bad date format => " << date_str << std::endl;
+    }
+
+    std::string amount_str = line.substr(line.find_first_not_of("|", pos));
+    amount_str.erase(remove_if(amount_str.begin(), amount_str.end(), isspace),
+                     amount_str.end());
+    float amount = std::strtod(amount_str.c_str(), NULL);
+    if (amount < 0 || amount > 1000) {
+      std::cout << "Error: not a positive or too large number.\n";
+    }
   }
 }
