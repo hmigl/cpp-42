@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:52:29 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/27 10:49:30 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/27 11:51:06 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,14 @@
 
 class BitcoinExchange {
  public:
+  BitcoinExchange();
   BitcoinExchange(const BitcoinExchange &);
   BitcoinExchange &operator=(const BitcoinExchange &);
   ~BitcoinExchange();
 
-  static BitcoinExchange from_amount_history_file(const std::string &);
+  void eval_from_amount_history_file(const std::string &);
 
  private:
-  BitcoinExchange();
-  BitcoinExchange(const std::map<std::string, float> &exchange_rate_history,
-                  const std::map<std::string, float> &amount_history);
-
   static const std::string ExchangeRateCSV;
 
   std::map<std::string, float> exchange_rate_history_;
