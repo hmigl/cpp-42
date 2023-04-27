@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:57:10 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/27 16:58:49 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/27 17:14:53 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,19 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
-void BitcoinExchange::csv_to_exchange_rate_history() {
-  std::ifstream ifs(ExchangeRateCSV.c_str(), std::ios::in);
+void BitcoinExchange::check_file(std::ifstream &ifs,
+                                 const std::string &file_name) const {
   if (!ifs.is_open()) {
-    throw std::invalid_argument(ExchangeRateCSV + ": invalid file");
+    throw std::invalid_argument(file_name + ": invalid file");
   }
   if (ifs.peek() == std::ifstream::traits_type::eof()) {
-    throw std::invalid_argument(ExchangeRateCSV + ": empty file");
+    throw std::invalid_argument(file_name + ": empty file");
   }
+}
+
+void BitcoinExchange::csv_to_exchange_rate_history() {
+  std::ifstream ifs(ExchangeRateCSV.c_str(), std::ios::in);
+  check_file(ifs, ExchangeRateCSV);
 
   std::string line;
   while (std::getline(ifs, line)) {
@@ -59,13 +64,7 @@ void BitcoinExchange::eval_from_amount_history_file(
   csv_to_exchange_rate_history();
 
   std::ifstream ifs(amount_history_file.c_str(), std::ios::in);
-  if (!ifs.is_open()) {
-    throw std::invalid_argument(amount_history_file + ": invalid file");
-  }
-
-  if (ifs.peek() == std::ifstream::traits_type::eof()) {
-    throw std::invalid_argument(amount_history_file + ": empty file");
-  }
+  check_file(ifs, amount_history_file);
 
   std::string line;
   while (std::getline(ifs, line)) {
