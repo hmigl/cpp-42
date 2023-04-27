@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:57:10 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/27 16:18:18 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/27 16:58:49 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,33 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
+void BitcoinExchange::csv_to_exchange_rate_history() {
+  std::ifstream ifs(ExchangeRateCSV.c_str(), std::ios::in);
+  if (!ifs.is_open()) {
+    throw std::invalid_argument(ExchangeRateCSV + ": invalid file");
+  }
+  if (ifs.peek() == std::ifstream::traits_type::eof()) {
+    throw std::invalid_argument(ExchangeRateCSV + ": empty file");
+  }
+
+  std::string line;
+  while (std::getline(ifs, line)) {
+    if (line.find_first_not_of("date,exchange_rate") == std::string::npos) {
+      continue;
+    }
+    size_t pos = line.find(",");
+    std::string date_str = line.substr(0, pos);
+    std::string exchange_rate_str = line.substr(pos + 1);
+    exchange_rate_history_.insert(std::pair<std::string, float>(
+        date_str, std::strtod(exchange_rate_str.c_str(), NULL)));
+  }
+  ifs.close();
+}
+
 void BitcoinExchange::eval_from_amount_history_file(
     const std::string &amount_history_file) {
+  csv_to_exchange_rate_history();
+
   std::ifstream ifs(amount_history_file.c_str(), std::ios::in);
   if (!ifs.is_open()) {
     throw std::invalid_argument(amount_history_file + ": invalid file");
