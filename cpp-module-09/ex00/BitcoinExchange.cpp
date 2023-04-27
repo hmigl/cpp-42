@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:57:10 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/27 10:57:29 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/27 11:06:18 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ BitcoinExchange BitcoinExchange::from_amount_history_file(
   std::ifstream ifs(amount_history_file.c_str(), std::ios::in);
   if (!ifs.is_open()) {
     throw std::invalid_argument(amount_history_file + ": invalid file");
+  }
+  if (ifs.peek() == std::ifstream::traits_type::eof()) {
+    throw std::invalid_argument(amount_history_file + ": empty file");
   }
 
   std::map<std::string, float> exchange_rate_history;
