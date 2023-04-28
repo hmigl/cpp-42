@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 10:33:49 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/28 11:49:53 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 11:52:44 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,21 @@ int RPN::eval_RPN(const std::string &math_expr_rpn_form) {
   }
   rpn_expr.erase(remove_if(rpn_expr.begin(), rpn_expr.end(), isspace),
                  rpn_expr.end());
-  return 0;
+
+  for (std::string::size_type i = 0; i < rpn_expr.size(); ++i) {
+    if (!is_operator(rpn_expr.at(i))) {
+      calculator_.push(rpn_expr.at(i) - '0');
+      continue;
+    }
+    if (calculator_.size() < 2) {
+      throw std::runtime_error("Cannot perform evaluation, review the input");
+    }
+    int b = calculator_.top();
+    calculator_.pop();
+    int a = calculator_.top();
+    calculator_.pop();
+    int res = eval(a, rpn_expr.at(i), b);
+    calculator_.push(res);
+  }
+  return calculator_.top();
 }
