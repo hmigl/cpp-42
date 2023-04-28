@@ -6,12 +6,14 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 10:10:57 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/28 10:18:55 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 10:41:20 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <algorithm>
+#include <cstdlib>
 #include <stack>
 #include <stdexcept>
 #include <string>
