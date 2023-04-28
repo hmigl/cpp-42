@@ -6,13 +6,11 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 10:33:49 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/28 11:52:44 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 11:54:00 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./RPN.hpp"
-
-#include <iostream>
 
 std::stack<int> RPN::calculator_;
 
