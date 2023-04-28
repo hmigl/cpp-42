@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 10:33:49 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/28 12:33:53 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 12:36:01 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ RPN &RPN::operator=(const RPN &other) {
 
 RPN::~RPN() {}
 
-int RPN::eval(const int &a, const char &o, const int &b) {
-  if (o == '+') {
+int RPN::eval(const int &a, const char &op, const int &b) {
+  if (op == '+') {
     return a + b;
   }
-  if (o == '-') {
+  if (op == '-') {
     return a - b;
   }
-  if (o == '/') {
+  if (op == '/') {
     if (b != 0) {
       return a / b;
     }
