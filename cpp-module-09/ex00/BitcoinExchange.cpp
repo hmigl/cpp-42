@@ -45,7 +45,7 @@ void BitcoinExchange::csv_to_exchange_rate_history() {
   std::ifstream ifs(ExchangeRateCSV.c_str(), std::ios::in);
   check_file(ifs, ExchangeRateCSV);
 
-  std::string line;
+  std::string line = "";
   while (std::getline(ifs, line)) {
     if (line.find_first_not_of("date,exchange_rate") == std::string::npos) {
       continue;
@@ -94,14 +94,13 @@ void BitcoinExchange::eval_from_amount_history_file(
   std::ifstream ifs(amount_history_file.c_str(), std::ios::in);
   check_file(ifs, amount_history_file);
 
-  std::string line;
+  std::string line = "";
   while (std::getline(ifs, line)) {
-    if (line.empty()) {
+    if (line.empty() ||
+        line.find_first_not_of("date | value") == std::string::npos) {
       continue;
     }
-    if (line.find_first_not_of("date | value") == std::string::npos) {
-      continue;
-    }
+
     size_t pos = line.find("|");
     if (pos == std::string::npos) {
       std::cout << "Error: bad input => " << line << std::endl;
