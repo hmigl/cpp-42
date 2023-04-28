@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 09:52:29 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/27 21:36:04 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 08:56:29 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ class BitcoinExchange {
   void check_file(std::ifstream &, const std::string &) const;
   bool read_date_and_amount(const std::string &, size_t);
   void eval_amount_from_exchange_rate();
+  bool is_valid_date(const std::string &) const;
 };

@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:57:10 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/28 08:31:43 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 09:04:07 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,32 @@ void BitcoinExchange::csv_to_exchange_rate_history() {
   ifs.close();
 }
 
+bool BitcoinExchange::is_valid_date(const std::string &date_str) const {
+  if (date_str.size() != 10 || date_str[4] != '-' || date_str[7] != '-') {
+    return false;
+  }
+
+  int year = std::atoi(date_str.substr(0, 4).c_str());
+  int month = std::atoi(date_str.substr(5, 2).c_str());
+  int day = std::atoi(date_str.substr(8, 2).c_str());
+  if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
+    return false;
+  }
+
+  int days_in_month = 31;
+  if (month == 4 || month == 6 || month == 9 || month == 11) {
+    days_in_month = 30;
+  } else if (month == 2) {
+    days_in_month =
+        (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
+  }
+  if (day > days_in_month) {
+    return false;
+  }
+
+  return true;
+}
+
 bool BitcoinExchange::read_date_and_amount(const std::string &line,
                                            size_t pos) {
   std::string date_str = line.substr(0, pos);
@@ -67,6 +93,10 @@ bool BitcoinExchange::read_date_and_amount(const std::string &line,
   if (date_str.find_first_not_of("0123456789-") != std::string::npos &&
       date_str != "date") {
     std::cout << "Error: bad date format => " << date_str << std::endl;
+    return false;
+  }
+  if (!is_valid_date(date_str)) {
+    std::cout << "Error: invalid date => " << date_str << std::endl;
     return false;
   }
 
