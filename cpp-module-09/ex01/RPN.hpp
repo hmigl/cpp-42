@@ -30,4 +30,5 @@ class RPN {
   RPN();
 
   static std::stack<int> calculator_;
+  static bool is_operator(const char &);
 };

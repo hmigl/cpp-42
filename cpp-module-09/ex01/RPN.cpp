@@ -27,6 +27,10 @@ RPN &RPN::operator=(const RPN &other) {
 
 RPN::~RPN() {}
 
+bool RPN::is_operator(const char &c) {
+  return c == '+' || c == '-' || c == '/' || c == '*';
+}
+
 int RPN::eval_RPN(const std::string &math_expr_rpn_form) {
   std::string rpn_expr = math_expr_rpn_form;
 
