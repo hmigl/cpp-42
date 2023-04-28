@@ -83,7 +83,8 @@ bool BitcoinExchange::read_date_and_amount(const std::string &line,
     std::cout << "Error: not positive or too large number.\n";
     return false;
   }
-  amount_history_.insert(std::pair<std::string, float>(date_str, amount));
+  // amount_history_.insert(std::pair<std::string, float>(date_str, amount));
+  amount_history_[date_str] = amount;
   return true;
 }
 
