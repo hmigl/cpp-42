@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:57:10 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/28 08:25:29 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 08:31:43 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void BitcoinExchange::eval_amount_from_exchange_rate() {
 
   std::map<std::string, float>::const_iterator it =
       exchange_rate_history_.lower_bound(query_date);
-  if (it != exchange_rate_history_.begin()) {
+  if (it != exchange_rate_history_.begin() && query_date != it->first) {
     --it;
   }
   float res = associated_amount * it->second;
