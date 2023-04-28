@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:57:10 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/27 18:42:07 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 08:10:48 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,27 @@ void BitcoinExchange::eval_from_amount_history_file(
       std::cout << "Error: bad input => " << line << std::endl;
       continue;
     }
+
     if (read_date_and_amount(line, pos)) {
-      // eval_amount_from_exchange_rate()
+      eval_amount_from_exchange_rate();
     }
   }
   ifs.close();
+}
+
+void BitcoinExchange::eval_amount_from_exchange_rate() {
+  // current [query_date,associated_amount] is the last one added
+  std::map<std::string, float>::const_iterator ite = amount_history_.end();
+  --ite;
+  std::string query_date = ite->first;
+  float associated_amount = ite->second;
+
+  std::map<std::string, float>::const_iterator it =
+      exchange_rate_history_.lower_bound(query_date);
+  if (it != exchange_rate_history_.begin()) {
+    --it;
+  }
+  float res = associated_amount * it->second;
+  std::cout << query_date << " => " << associated_amount << " = " << res
+            << '\n';
 }
