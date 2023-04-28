@@ -6,13 +6,15 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 10:33:49 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/28 10:44:32 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 11:49:53 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./RPN.hpp"
 
 #include <iostream>
+
+std::stack<int> RPN::calculator_;
 
 RPN::RPN() {}
 
@@ -26,6 +28,22 @@ RPN &RPN::operator=(const RPN &other) {
 }
 
 RPN::~RPN() {}
+
+int RPN::eval(const int &a, const char &o, const int &b) {
+  if (o == '+') {
+    return a + b;
+  }
+  if (o == '-') {
+    return a - b;
+  }
+  if (o == '/') {
+    if (b != 0) {
+      return a / b;
+    }
+    throw std::logic_error("Cannot divide by 0");
+  }
+  return a * b;
+}
 
 bool RPN::is_operator(const char &c) {
   return c == '+' || c == '-' || c == '/' || c == '*';
