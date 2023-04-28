@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 10:57:10 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/28 08:10:48 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 08:25:29 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,14 @@ bool BitcoinExchange::read_date_and_amount(const std::string &line,
     return false;
   }
   float amount = std::strtod(amount_str.c_str(), NULL);
-  if (amount < 0 || amount > 1000) {
-    std::cout << "Error: not positive or too large number.\n";
+  if (amount < 0) {
+    std::cout << "Error: not a positive number.\n";
     return false;
   }
-  // amount_history_.insert(std::pair<std::string, float>(date_str, amount));
+  if (amount > 1000) {
+    std::cout << "Error: number too large.\n";
+    return false;
+  }
   amount_history_[date_str] = amount;
   return true;
 }
