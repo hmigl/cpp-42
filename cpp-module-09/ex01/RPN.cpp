@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 10:33:49 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/28 11:54:00 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/28 12:33:53 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,15 @@ bool RPN::is_operator(const char &c) {
   return c == '+' || c == '-' || c == '/' || c == '*';
 }
 
+void RPN::eval_expr_and_push(const char &op) {
+  int b = calculator_.top();
+  calculator_.pop();
+  int a = calculator_.top();
+  calculator_.pop();
+  int res = eval(a, op, b);
+  calculator_.push(res);
+}
+
 int RPN::eval_RPN(const std::string &math_expr_rpn_form) {
   std::string rpn_expr = math_expr_rpn_form;
 
@@ -65,12 +74,7 @@ int RPN::eval_RPN(const std::string &math_expr_rpn_form) {
     if (calculator_.size() < 2) {
       throw std::runtime_error("Cannot perform evaluation, review the input");
     }
-    int b = calculator_.top();
-    calculator_.pop();
-    int a = calculator_.top();
-    calculator_.pop();
-    int res = eval(a, rpn_expr.at(i), b);
-    calculator_.push(res);
+    eval_expr_and_push(rpn_expr.at(i));
   }
   return calculator_.top();
 }
