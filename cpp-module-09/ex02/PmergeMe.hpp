@@ -22,6 +22,7 @@
 
 class PmergeMe {
  public:
+  PmergeMe(std::list<int> &, std::deque<int> &);
   PmergeMe(const PmergeMe &);
   PmergeMe &operator=(const PmergeMe &);
   ~PmergeMe();
