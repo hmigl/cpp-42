@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/29 10:15:28 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/29 10:18:06 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ PmergeMe::PmergeMe(const char **seq) {
   std::cout << "42069\n";
 }
 
-PmergeMe::PmergeMe(const PmergeMe &) {}
+PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
 
-PmergeMe &PmergeMe::operator=(const PmergeMe &) {}
+PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
+  if (this != &other) {
+  }
+  return *this;
+}
 
 PmergeMe::~PmergeMe() {}
