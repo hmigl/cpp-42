@@ -6,13 +6,13 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/29 12:34:23 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/29 12:44:09 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./PmergeMe.hpp"
 
-PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe() : l_(), d_() {}
 
 PmergeMe::PmergeMe(std::list<int> &l, std::deque<int> &d) : l_(l), d_(d) {}
 
@@ -20,6 +20,8 @@ PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
   if (this != &other) {
+    l_ = other.l_;
+    d_ = other.d_;
   }
   return *this;
 }
