@@ -30,6 +30,8 @@ PmergeMe PmergeMe::from_sequence(const char **seq) {
   if (seq == NULL || (*seq) == NULL) {
     throw std::invalid_argument("yadayada");
   }
+
+  std::vector<int> v;
   for (size_t i = 0; seq[i]; ++i) {
     const char *str = seq[i];
     while (*str) {
@@ -42,7 +44,13 @@ PmergeMe PmergeMe::from_sequence(const char **seq) {
     if (n < 1 || n > std::numeric_limits<int>::max()) {
       throw std::invalid_argument("yadayada3");
     }
+    v.push_back(n);
   }
+
+  std::list<int> l;
+  PmergeMe::fill_cont(l, v.begin(), v.end());
+  std::deque<int> d;
+  PmergeMe::fill_cont(d, v.begin(), v.end());
   std::cout << "42069\n";
-  return PmergeMe();
+  return PmergeMe(l, d);
 }

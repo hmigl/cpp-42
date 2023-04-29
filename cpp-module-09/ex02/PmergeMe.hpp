@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/29 12:21:02 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/29 12:31:46 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <limits>
 #include <list>
 #include <stdexcept>
+#include <vector>
 
 class PmergeMe {
  public:
@@ -34,4 +35,9 @@ class PmergeMe {
 
   std::list<int> l_;
   std::deque<int> d_;
+
+  template <typename Cont, typename InputIt>
+  static void fill_cont(Cont &cont, InputIt first, InputIt last) {
+    cont.insert(cont.end(), first, last);
+  }
 };
