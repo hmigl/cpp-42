@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/29 12:44:09 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/29 13:41:53 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,23 @@ PmergeMe PmergeMe::from_sequence(const char **seq) {
   PmergeMe::fill_cont(d, v.begin(), v.end());
   std::cout << "42069\n";
   return PmergeMe(l, d);
+}
+
+void PmergeMe::print_before() const {
+  std::cout << "Before: ";
+  if (l_.empty()) {
+    std::cout << "empty";
+    return;
+  }
+  // TODO: if (is_sorted()) std::cout << "sorted seq...";
+  int i = 0;
+  for (std::list<int>::const_iterator it = l_.begin(); it != l_.end();
+       ++it, ++i) {
+    if (i == 10) {
+      std::cout << "[...]";
+      break;
+    }
+    std::cout << (*it) << ' ';
+  }
+  std::cout << '\n';
 }

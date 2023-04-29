@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/29 12:31:46 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/29 13:30:05 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class PmergeMe {
   ~PmergeMe();
 
   static PmergeMe from_sequence(const char **);
+  void print_before() const;
 
  private:
   PmergeMe();
