@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:11:55 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/29 10:09:29 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/04/29 10:20:26 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int argc, const char *argv[]) {
   }
 
   try {
-    PmergeMe p(argv + 1);
+    PmergeMe p = PmergeMe::from_sequence(argv + 1);
   } catch (const std::exception &e) {
     std::cerr << e.what() << '\n';
   }
