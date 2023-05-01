@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 10:36:22 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 13:00:36 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <cstdlib>
 #include <cstring>
+#include <ctime>
 #include <deque>
 #include <iostream>
 #include <limits>
@@ -32,12 +33,15 @@ class PmergeMe {
   void print_before() const;
   void sort();
   void print_after() const;
+  void print_stats() const;
 
  private:
   PmergeMe();
 
   std::list<int> l_;
   std::deque<int> d_;
+  double elapsed_time_l_;
+  double elapsed_time_d_;
 
   typedef std::deque<int>::iterator DequeIt;
   typedef std::deque<int>::const_iterator DequeConstIt;

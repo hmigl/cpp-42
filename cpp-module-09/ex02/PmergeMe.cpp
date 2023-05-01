@@ -6,15 +6,16 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 10:35:50 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 13:32:11 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./PmergeMe.hpp"
 
-PmergeMe::PmergeMe() : l_(), d_() {}
+PmergeMe::PmergeMe() : l_(), d_(), elapsed_time_l_(0), elapsed_time_d_(0) {}
 
-PmergeMe::PmergeMe(std::list<int> &l, std::deque<int> &d) : l_(l), d_(d) {}
+PmergeMe::PmergeMe(std::list<int> &l, std::deque<int> &d)
+    : l_(l), d_(d), elapsed_time_l_(0), elapsed_time_d_(0) {}
 
 PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
 
@@ -53,7 +54,6 @@ PmergeMe PmergeMe::from_sequence(const char **seq) {
   PmergeMe::fill_cont(l, v.begin(), v.end());
   std::deque<int> d;
   PmergeMe::fill_cont(d, v.begin(), v.end());
-  std::cout << "42069\n";
   return PmergeMe(l, d);
 }
 
@@ -93,7 +93,17 @@ void PmergeMe::print_after() const {
   std::cout << '\n';
 }
 
-void PmergeMe::sort() { merge_insert_sort(d_, d_.begin(), d_.end()); }
+void PmergeMe::print_stats() const {
+  std::cout << "Time to process a range of " << d_.size()
+            << " elements with std::deque " << elapsed_time_d_ << " seconds\n";
+}
+
+void PmergeMe::sort() {
+  std::clock_t start_time = std::clock();
+  merge_insert_sort(d_, d_.begin(), d_.end());
+  std::clock_t end_time = std::clock();
+  elapsed_time_d_ = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
+}
 
 void PmergeMe::merge_insert_sort(std::deque<int> &d, DequeIt begin,
                                  DequeIt end) {
