@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 18:15:34 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 18:41:27 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,15 @@ class PmergeMe {
   template <typename Cont, typename ContIt>
   static void fill_cont(Cont &cont, ContIt first, ContIt last) {
     cont.insert(cont.end(), first, last);
+  }
+
+  template <typename ContIt>
+  static bool is_sorted(ContIt begin, ContIt end) {
+    for (ContIt it = begin + 1; it != end; ++it) {
+      if (*it < *(it - 1)) {
+        return false;
+      }
+    }
+    return true;
   }
 };

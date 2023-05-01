@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 18:32:07 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 18:44:10 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,11 @@ void PmergeMe::print_before() const {
 void PmergeMe::print_after() const {
   std::cout << "After (std::deque):  ";
   if (d_.empty()) {
-    std::cout << "empty";
+    std::cout << "empty\n";
+    return;
+  }
+  if (!PmergeMe::is_sorted(d_.begin(), d_.end())) {
+    std::cout << "unsorted container\n";
     return;
   }
   int i = 0;
@@ -104,8 +108,12 @@ void PmergeMe::print_after() const {
   std::cout << '\n';
 
   std::cout << "After (std::vector): ";
-  if (d_.empty()) {
+  if (v_.empty()) {
     std::cout << "empty";
+    return;
+  }
+  if (!PmergeMe::is_sorted(v_.begin(), v_.end())) {
+    std::cout << "unsorted container\n";
     return;
   }
   i = 0;
