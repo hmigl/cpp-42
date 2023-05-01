@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/29 13:30:05 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 10:36:22 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class PmergeMe {
 
   static PmergeMe from_sequence(const char **);
   void print_before() const;
+  void sort();
 
  private:
   PmergeMe();
@@ -37,8 +38,12 @@ class PmergeMe {
   std::list<int> l_;
   std::deque<int> d_;
 
-  template <typename Cont, typename InputIt>
-  static void fill_cont(Cont &cont, InputIt first, InputIt last) {
+  typedef std::deque<int>::iterator DequeIt;
+  void merge_insert_sort(std::deque<int> &, DequeIt, DequeIt);
+  void merge(std::deque<int> &, DequeIt, DequeIt, DequeIt);
+
+  template <typename Cont, typename ContIt>
+  static void fill_cont(Cont &cont, ContIt first, ContIt last) {
     cont.insert(cont.end(), first, last);
   }
 };

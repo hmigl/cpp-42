@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/04/29 13:41:53 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 10:35:50 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,37 @@ void PmergeMe::print_before() const {
     std::cout << (*it) << ' ';
   }
   std::cout << '\n';
+}
+
+void PmergeMe::sort() { merge_insert_sort(d_, d_.begin(), d_.end()); }
+
+void PmergeMe::merge_insert_sort(std::deque<int> &d,
+                                 std::deque<int>::iterator begin,
+                                 std::deque<int>::iterator end) {
+  if (end - begin > 1) {
+    std::deque<int>::iterator middle = begin;
+    std::advance(middle, (end - begin) / 2);
+    merge_insert_sort(d, begin, middle);
+    merge_insert_sort(d, middle, end);
+    merge(d, begin, middle, end);
+  }
+}
+
+void PmergeMe::merge(std::deque<int> &d, DequeIt begin, DequeIt middle,
+                     DequeIt end) {
+  std::deque<int> left_side(begin, middle);
+  std::deque<int> right_side(middle, end);
+
+  // std::cout << "lado esquerdo: \n";
+  // for (DequeIt it = left_side.begin(); it != left_side.end(); ++it) {
+  //   std::cout << (*it) << ' ';
+  // }
+  // std::cout << '\n';
+  //
+  // std::cout << "lado direito: \n";
+  // for (DequeIt it = right_side.begin(); it != right_side.end(); ++it) {
+  //   std::cout << (*it) << ' ';
+  // }
+  // std::cout << '\n';
+  // static_cast<void>(d);
 }
