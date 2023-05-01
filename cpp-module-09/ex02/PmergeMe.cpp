@@ -136,3 +136,15 @@ void PmergeMe::merge(DequeIt begin, DequeIt middle, DequeIt end) {
   }
   std::copy(temp.begin(), temp.end(), begin);
 }
+
+void PmergeMe::insertion_sort(DequeIt begin, DequeIt end) {
+  for (DequeIt it = begin + 1; it != end; ++it) {
+    int key = *it;
+    DequeIt prev_it = it - 1;
+    while (prev_it != begin - 1 && *prev_it > key) {
+      *(prev_it + 1) = *prev_it;
+      --prev_it;
+    }
+    *(prev_it + 1) = key;
+  }
+}

@@ -47,6 +47,7 @@ class PmergeMe {
   typedef std::deque<int>::const_iterator DequeConstIt;
   void merge_insert_sort(std::deque<int> &, DequeIt, DequeIt);
   void merge(DequeIt, DequeIt, DequeIt);
+  void insertion_sort(DequeIt, DequeIt);
 
   template <typename Cont, typename ContIt>
   static void fill_cont(Cont &cont, ContIt first, ContIt last) {
