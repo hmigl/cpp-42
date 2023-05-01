@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 13:32:11 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 17:03:15 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,24 +95,27 @@ void PmergeMe::print_after() const {
 
 void PmergeMe::print_stats() const {
   std::cout << "Time to process a range of " << d_.size()
-            << " elements with std::deque " << elapsed_time_d_ << " seconds\n";
+            << " elements with std::deque => " << elapsed_time_d_
+            << " seconds\n";
 }
 
 void PmergeMe::sort() {
   std::clock_t start_time = std::clock();
-  merge_insert_sort(d_, d_.begin(), d_.end());
+  merge_insertion_sort(d_, d_.begin(), d_.end());
   std::clock_t end_time = std::clock();
   elapsed_time_d_ = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
 }
 
-void PmergeMe::merge_insert_sort(std::deque<int> &d, DequeIt begin,
-                                 DequeIt end) {
-  if (end - begin > 1) {
-    std::deque<int>::iterator middle = begin;
+void PmergeMe::merge_insertion_sort(std::deque<int> &d, DequeIt begin,
+                                    DequeIt end) {
+  if (end - begin > PmergeMe::GroupSize) {
+    DequeIt middle = begin;
     std::advance(middle, (end - begin) / 2);
-    merge_insert_sort(d, begin, middle);
-    merge_insert_sort(d, middle, end);
+    merge_insertion_sort(d, begin, middle);
+    merge_insertion_sort(d, middle, end);
     merge(begin, middle, end);
+  } else {
+    insertion_sort(begin, end);
   }
 }
 

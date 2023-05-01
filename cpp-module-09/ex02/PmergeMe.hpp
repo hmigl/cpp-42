@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 13:00:36 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 16:07:43 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ class PmergeMe {
  private:
   PmergeMe();
 
+  static const int GroupSize = 5;
+
   std::list<int> l_;
   std::deque<int> d_;
   double elapsed_time_l_;
@@ -45,7 +47,7 @@ class PmergeMe {
 
   typedef std::deque<int>::iterator DequeIt;
   typedef std::deque<int>::const_iterator DequeConstIt;
-  void merge_insert_sort(std::deque<int> &, DequeIt, DequeIt);
+  void merge_insertion_sort(std::deque<int> &, DequeIt, DequeIt);
   void merge(DequeIt, DequeIt, DequeIt);
   void insertion_sort(DequeIt, DequeIt);
 
