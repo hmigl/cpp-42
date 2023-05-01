@@ -78,33 +78,34 @@ void PmergeMe::print_before() const {
 
 void PmergeMe::sort() { merge_insert_sort(d_, d_.begin(), d_.end()); }
 
-void PmergeMe::merge_insert_sort(std::deque<int> &d,
-                                 std::deque<int>::iterator begin,
-                                 std::deque<int>::iterator end) {
+void PmergeMe::merge_insert_sort(std::deque<int> &d, DequeIt begin,
+                                 DequeIt end) {
   if (end - begin > 1) {
     std::deque<int>::iterator middle = begin;
     std::advance(middle, (end - begin) / 2);
     merge_insert_sort(d, begin, middle);
     merge_insert_sort(d, middle, end);
-    merge(d, begin, middle, end);
+    merge(begin, middle, end);
   }
 }
 
-void PmergeMe::merge(std::deque<int> &d, DequeIt begin, DequeIt middle,
-                     DequeIt end) {
-  std::deque<int> left_side(begin, middle);
-  std::deque<int> right_side(middle, end);
+void PmergeMe::merge(DequeIt begin, DequeIt middle, DequeIt end) {
+  std::deque<int> temp(end - begin);
+  DequeIt left = begin, right = middle, temp_it = temp.begin();
 
-  // std::cout << "lado esquerdo: \n";
-  // for (DequeIt it = left_side.begin(); it != left_side.end(); ++it) {
-  //   std::cout << (*it) << ' ';
-  // }
-  // std::cout << '\n';
-  //
-  // std::cout << "lado direito: \n";
-  // for (DequeIt it = right_side.begin(); it != right_side.end(); ++it) {
-  //   std::cout << (*it) << ' ';
-  // }
-  // std::cout << '\n';
-  // static_cast<void>(d);
+  while (left != middle && right != end) {
+    if (*left <= *right) {
+      *temp_it++ = *left++;
+    } else {
+      *temp_it++ = *right++;
+    }
+  }
+
+  while (left != middle) {
+    *temp_it++ = *left++;
+  }
+  while (right != end) {
+    *temp_it++ = *right++;
+  }
+  std::copy(temp.begin(), temp.end(), begin);
 }
