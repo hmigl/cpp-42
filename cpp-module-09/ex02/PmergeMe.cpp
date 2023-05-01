@@ -192,6 +192,47 @@ void PmergeMe::insertion_sort(DequeIt begin, DequeIt end) {
 /*
  * Implementation for std::vector<int>
  * */
-void PmergeMe::merge_insertion_sort(VectorIt begin, VectorIt end) {}
+void PmergeMe::merge_insertion_sort(VectorIt begin, VectorIt end) {
+  if (end - begin > PmergeMe::GroupSize) {
+    VectorIt middle = begin;
+    std::advance(middle, (end - begin) / 2);
+    merge_insertion_sort(begin, middle);
+    merge_insertion_sort(middle, end);
+    merge(begin, middle, end);
+  } else {
+    insertion_sort(begin, end);
+  }
+}
 
-void PmergeMe::merge(VectorIt begin, VectorIt middle, VectorIt end) {}
+void PmergeMe::merge(VectorIt begin, VectorIt middle, VectorIt end) {
+  std::vector<int> temp(end - begin);
+  VectorIt left = begin, right = middle, temp_it = temp.begin();
+
+  while (left != middle && right != end) {
+    if (*left <= *right) {
+      *temp_it++ = *left++;
+    } else {
+      *temp_it++ = *right++;
+    }
+  }
+
+  while (left != middle) {
+    *temp_it++ = *left++;
+  }
+  while (right != end) {
+    *temp_it++ = *right++;
+  }
+  std::copy(temp.begin(), temp.end(), begin);
+}
+
+void PmergeMe::insertion_sort(VectorIt begin, VectorIt end) {
+  for (VectorIt it = begin + 1; it != end; ++it) {
+    int key = *it;
+    VectorIt prev_it = it - 1;
+    while (prev_it >= begin && *prev_it > key) {
+      *(prev_it + 1) = *prev_it;
+      --prev_it;
+    }
+    *(prev_it + 1) = key;
+  }
+}
