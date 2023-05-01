@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 18:41:27 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 20:30:03 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <limits>
 #include <list>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
 class PmergeMe {
@@ -70,5 +71,47 @@ class PmergeMe {
       }
     }
     return true;
+  }
+
+  template <typename Cont>
+  void print_before(const std::string &cont_name, const Cont &cont) const {
+    std::cout << "Before (" << cont_name << "): ";
+    if (cont.empty()) {
+      std::cout << "empty";
+      return;
+    }
+    int i = 0;
+    for (typename Cont::const_iterator it = cont.begin(); it != cont.end();
+         ++it, ++i) {
+      if (i == 10) {
+        std::cout << "[...]";
+        break;
+      }
+      std::cout << (*it) << ' ';
+    }
+    std::cout << '\n';
+  }
+
+  template <typename Cont>
+  void print_after(const std::string &cont_name, const Cont &cont) const {
+    std::cout << "After (" << cont_name << "): ";
+    if (cont.empty()) {
+      std::cout << "empty\n";
+      return;
+    }
+    if (!is_sorted(cont.begin(), cont.end())) {
+      std::cout << "unsorted container\n";
+      return;
+    }
+    int i = 0;
+    for (typename Cont::const_iterator it = cont.begin(); it != cont.end();
+         ++it, ++i) {
+      if (i == 10) {
+        std::cout << "[...]";
+        break;
+      }
+      std::cout << (*it) << ' ';
+    }
+    std::cout << '\n';
   }
 };

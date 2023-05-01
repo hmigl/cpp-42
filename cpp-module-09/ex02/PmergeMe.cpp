@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 18:44:10 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 20:32:14 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,75 +56,13 @@ PmergeMe PmergeMe::from_sequence(const char **seq) {
 }
 
 void PmergeMe::print_before() const {
-  std::cout << "Before (std::deque): ";
-  if (d_.empty()) {
-    std::cout << "empty";
-    return;
-  }
-  int i = 0;
-  for (DequeConstIt it = d_.begin(); it != d_.end(); ++it, ++i) {
-    if (i == 10) {
-      std::cout << "[...]";
-      break;
-    }
-    std::cout << (*it) << ' ';
-  }
-  std::cout << '\n';
-
-  std::cout << "Before (std::vector): ";
-  if (v_.empty()) {
-    std::cout << "empty";
-    return;
-  }
-  i = 0;
-  for (VectorConstIt it = v_.begin(); it != v_.end(); ++it, ++i) {
-    if (i == 10) {
-      std::cout << "[...]";
-      break;
-    }
-    std::cout << (*it) << ' ';
-  }
-  std::cout << '\n';
+  print_before("std::deque", d_);
+  print_before("std::vector", v_);
 }
 
 void PmergeMe::print_after() const {
-  std::cout << "After (std::deque):  ";
-  if (d_.empty()) {
-    std::cout << "empty\n";
-    return;
-  }
-  if (!PmergeMe::is_sorted(d_.begin(), d_.end())) {
-    std::cout << "unsorted container\n";
-    return;
-  }
-  int i = 0;
-  for (DequeConstIt it = d_.begin(); it != d_.end(); ++it, ++i) {
-    if (i == 10) {
-      std::cout << "[...]";
-      break;
-    }
-    std::cout << (*it) << ' ';
-  }
-  std::cout << '\n';
-
-  std::cout << "After (std::vector): ";
-  if (v_.empty()) {
-    std::cout << "empty";
-    return;
-  }
-  if (!PmergeMe::is_sorted(v_.begin(), v_.end())) {
-    std::cout << "unsorted container\n";
-    return;
-  }
-  i = 0;
-  for (VectorConstIt it = v_.begin(); it != v_.end(); ++it, ++i) {
-    if (i == 10) {
-      std::cout << "[...]";
-      break;
-    }
-    std::cout << (*it) << ' ';
-  }
-  std::cout << '\n';
+  print_after("std::deque", d_);
+  print_after("std::vector", v_);
 }
 
 void PmergeMe::print_stats() const {
