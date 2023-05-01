@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 16:07:43 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 17:07:10 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class PmergeMe {
  private:
   PmergeMe();
 
-  static const int GroupSize = 5;
+  static const int GroupSize = 25;
 
   std::list<int> l_;
   std::deque<int> d_;
