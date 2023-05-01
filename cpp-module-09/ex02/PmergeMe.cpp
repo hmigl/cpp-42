@@ -76,6 +76,23 @@ void PmergeMe::print_before() const {
   std::cout << '\n';
 }
 
+void PmergeMe::print_after() const {
+  std::cout << "After:  ";
+  if (d_.empty()) {
+    std::cout << "empty";
+    return;
+  }
+  int i = 0;
+  for (DequeConstIt it = d_.begin(); it != d_.end(); ++it, ++i) {
+    if (i == 10) {
+      std::cout << "[...]";
+      break;
+    }
+    std::cout << (*it) << ' ';
+  }
+  std::cout << '\n';
+}
+
 void PmergeMe::sort() { merge_insert_sort(d_, d_.begin(), d_.end()); }
 
 void PmergeMe::merge_insert_sort(std::deque<int> &d, DequeIt begin,

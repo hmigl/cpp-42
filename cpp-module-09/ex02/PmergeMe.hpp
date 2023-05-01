@@ -31,6 +31,7 @@ class PmergeMe {
   static PmergeMe from_sequence(const char **);
   void print_before() const;
   void sort();
+  void print_after() const;
 
  private:
   PmergeMe();
