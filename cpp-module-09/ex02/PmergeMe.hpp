@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 17:07:10 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 18:15:34 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 class PmergeMe {
  public:
-  PmergeMe(std::list<int> &, std::deque<int> &);
+  PmergeMe(std::vector<int> &, std::deque<int> &);
   PmergeMe(const PmergeMe &);
   PmergeMe &operator=(const PmergeMe &);
   ~PmergeMe();
@@ -40,9 +40,9 @@ class PmergeMe {
 
   static const int GroupSize = 25;
 
-  std::list<int> l_;
+  std::vector<int> v_;
   std::deque<int> d_;
-  double elapsed_time_l_;
+  double elapsed_time_v_;
   double elapsed_time_d_;
 
   typedef std::deque<int>::iterator DequeIt;
@@ -50,6 +50,12 @@ class PmergeMe {
   void merge_insertion_sort(std::deque<int> &, DequeIt, DequeIt);
   void merge(DequeIt, DequeIt, DequeIt);
   void insertion_sort(DequeIt, DequeIt);
+
+  typedef std::vector<int>::iterator VectorIt;
+  typedef std::vector<int>::const_iterator VectorConstIt;
+  void merge_insertion_sort(VectorIt, VectorIt);
+  void merge(VectorIt, VectorIt, VectorIt);
+  void insertion_sort(VectorIt, VectorIt);
 
   template <typename Cont, typename ContIt>
   static void fill_cont(Cont &cont, ContIt first, ContIt last) {

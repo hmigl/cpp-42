@@ -6,22 +6,22 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 17:03:15 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 18:15:55 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./PmergeMe.hpp"
 
-PmergeMe::PmergeMe() : l_(), d_(), elapsed_time_l_(0), elapsed_time_d_(0) {}
+PmergeMe::PmergeMe() : v_(), d_(), elapsed_time_v_(0), elapsed_time_d_(0) {}
 
-PmergeMe::PmergeMe(std::list<int> &l, std::deque<int> &d)
-    : l_(l), d_(d), elapsed_time_l_(0), elapsed_time_d_(0) {}
+PmergeMe::PmergeMe(std::vector<int> &v, std::deque<int> &d)
+    : v_(v), d_(d), elapsed_time_v_(0), elapsed_time_d_(0) {}
 
 PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
   if (this != &other) {
-    l_ = other.l_;
+    v_ = other.v_;
     d_ = other.d_;
   }
   return *this;
@@ -50,23 +50,20 @@ PmergeMe PmergeMe::from_sequence(const char **seq) {
     v.push_back(n);
   }
 
-  std::list<int> l;
-  PmergeMe::fill_cont(l, v.begin(), v.end());
   std::deque<int> d;
   PmergeMe::fill_cont(d, v.begin(), v.end());
-  return PmergeMe(l, d);
+  return PmergeMe(v, d);
 }
 
 void PmergeMe::print_before() const {
   std::cout << "Before: ";
-  if (l_.empty()) {
+  if (v_.empty()) {
     std::cout << "empty";
     return;
   }
   // TODO: if (is_sorted()) std::cout << "sorted seq...";
   int i = 0;
-  for (std::list<int>::const_iterator it = l_.begin(); it != l_.end();
-       ++it, ++i) {
+  for (VectorConstIt it = v_.begin(); it != v_.end(); ++it, ++i) {
     if (i == 10) {
       std::cout << "[...]";
       break;
@@ -97,6 +94,9 @@ void PmergeMe::print_stats() const {
   std::cout << "Time to process a range of " << d_.size()
             << " elements with std::deque => " << elapsed_time_d_
             << " seconds\n";
+  std::cout << "Time to process a range of " << v_.size()
+            << " elements with std::vector => " << elapsed_time_v_
+            << " seconds\n";
 }
 
 void PmergeMe::sort() {
@@ -104,8 +104,16 @@ void PmergeMe::sort() {
   merge_insertion_sort(d_, d_.begin(), d_.end());
   std::clock_t end_time = std::clock();
   elapsed_time_d_ = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
+
+  start_time = std::clock();
+  merge_insertion_sort(v_.begin(), v_.end());
+  end_time = std::clock();
+  elapsed_time_v_ = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
 }
 
+/*
+ * Implementation for std::deque<int>
+ * */
 void PmergeMe::merge_insertion_sort(std::deque<int> &d, DequeIt begin,
                                     DequeIt end) {
   if (end - begin > PmergeMe::GroupSize) {
@@ -151,3 +159,10 @@ void PmergeMe::insertion_sort(DequeIt begin, DequeIt end) {
     *(prev_it + 1) = key;
   }
 }
+
+/*
+ * Implementation for std::vector<int>
+ * */
+void PmergeMe::merge_insertion_sort(VectorIt begin, VectorIt end) {}
+
+void PmergeMe::merge(VectorIt begin, VectorIt middle, VectorIt end) {}
