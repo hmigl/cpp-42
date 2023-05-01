@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 18:15:55 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 18:32:07 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,27 @@ PmergeMe PmergeMe::from_sequence(const char **seq) {
 }
 
 void PmergeMe::print_before() const {
-  std::cout << "Before: ";
+  std::cout << "Before (std::deque): ";
+  if (d_.empty()) {
+    std::cout << "empty";
+    return;
+  }
+  int i = 0;
+  for (DequeConstIt it = d_.begin(); it != d_.end(); ++it, ++i) {
+    if (i == 10) {
+      std::cout << "[...]";
+      break;
+    }
+    std::cout << (*it) << ' ';
+  }
+  std::cout << '\n';
+
+  std::cout << "Before (std::vector): ";
   if (v_.empty()) {
     std::cout << "empty";
     return;
   }
-  // TODO: if (is_sorted()) std::cout << "sorted seq...";
-  int i = 0;
+  i = 0;
   for (VectorConstIt it = v_.begin(); it != v_.end(); ++it, ++i) {
     if (i == 10) {
       std::cout << "[...]";
@@ -74,13 +88,28 @@ void PmergeMe::print_before() const {
 }
 
 void PmergeMe::print_after() const {
-  std::cout << "After:  ";
+  std::cout << "After (std::deque):  ";
   if (d_.empty()) {
     std::cout << "empty";
     return;
   }
   int i = 0;
   for (DequeConstIt it = d_.begin(); it != d_.end(); ++it, ++i) {
+    if (i == 10) {
+      std::cout << "[...]";
+      break;
+    }
+    std::cout << (*it) << ' ';
+  }
+  std::cout << '\n';
+
+  std::cout << "After (std::vector): ";
+  if (d_.empty()) {
+    std::cout << "empty";
+    return;
+  }
+  i = 0;
+  for (VectorConstIt it = v_.begin(); it != v_.end(); ++it, ++i) {
     if (i == 10) {
       std::cout << "[...]";
       break;
@@ -152,7 +181,7 @@ void PmergeMe::insertion_sort(DequeIt begin, DequeIt end) {
   for (DequeIt it = begin + 1; it != end; ++it) {
     int key = *it;
     DequeIt prev_it = it - 1;
-    while (prev_it != begin - 1 && *prev_it > key) {
+    while (prev_it >= begin && *prev_it > key) {
       *(prev_it + 1) = *prev_it;
       --prev_it;
     }
