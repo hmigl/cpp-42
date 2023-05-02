@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 22:28:32 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/02 08:55:32 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,9 @@ class PmergeMe {
 
   typedef std::deque<int>::iterator DequeIt;
   typedef std::deque<int>::const_iterator DequeConstIt;
-  void merge_insertion_sort(DequeIt, DequeIt);
-  void merge(DequeIt, DequeIt, DequeIt);
-  void insertion_sort(DequeIt, DequeIt);
 
   typedef std::vector<int>::iterator VectorIt;
   typedef std::vector<int>::const_iterator VectorConstIt;
-  void merge_insertion_sort(VectorIt, VectorIt);
-  void merge(VectorIt, VectorIt, VectorIt);
-  void insertion_sort(VectorIt, VectorIt);
 
   template <typename Cont, typename ContIt>
   static void fill_cont(Cont &cont, ContIt first, ContIt last) {
@@ -113,5 +107,53 @@ class PmergeMe {
       std::cout << (*it) << ' ';
     }
     std::cout << '\n';
+  }
+
+  template <typename ContIt, typename Cont>
+  void merge_insertion_sort(ContIt begin, ContIt end) {
+    if (end - begin > PmergeMe::GroupSize) {
+      ContIt middle = begin;
+      std::advance(middle, (end - begin) / 2);
+      merge_insertion_sort<ContIt, Cont>(begin, middle);
+      merge_insertion_sort<ContIt, Cont>(middle, end);
+      merge<ContIt, Cont>(begin, middle, end);
+    } else {
+      insertion_sort<ContIt>(begin, end);
+    }
+  }
+
+  template <typename ContIt, typename Cont>
+  void merge(ContIt begin, ContIt middle, ContIt end) {
+    Cont temp(end - begin);
+    ContIt left = begin, right = middle, temp_it = temp.begin();
+
+    while (left != middle && right != end) {
+      if (*left <= *right) {
+        *temp_it++ = *left++;
+      } else {
+        *temp_it++ = *right++;
+      }
+    }
+
+    while (left != middle) {
+      *temp_it++ = *left++;
+    }
+    while (right != end) {
+      *temp_it++ = *right++;
+    }
+    std::copy(temp.begin(), temp.end(), begin);
+  }
+
+  template <typename ContIt>
+  void insertion_sort(ContIt begin, ContIt end) {
+    for (ContIt it = begin + 1; it != end; ++it) {
+      int key = *it;
+      ContIt prev_it = it - 1;
+      while (prev_it >= begin && *prev_it > key) {
+        *(prev_it + 1) = *prev_it;
+        --prev_it;
+      }
+      *(prev_it + 1) = key;
+    }
   }
 };
