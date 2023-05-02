@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 09:22:45 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 20:30:03 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 22:28:32 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class PmergeMe {
 
   typedef std::deque<int>::iterator DequeIt;
   typedef std::deque<int>::const_iterator DequeConstIt;
-  void merge_insertion_sort(std::deque<int> &, DequeIt, DequeIt);
+  void merge_insertion_sort(DequeIt, DequeIt);
   void merge(DequeIt, DequeIt, DequeIt);
   void insertion_sort(DequeIt, DequeIt);
 

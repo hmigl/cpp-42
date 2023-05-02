@@ -6,7 +6,7 @@
 /*   By: hmigl <hmigl@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 10:13:24 by hmigl             #+#    #+#             */
-/*   Updated: 2023/05/01 20:32:14 by hmigl            ###   ########.fr       */
+/*   Updated: 2023/05/01 20:47:22 by hmigl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void PmergeMe::print_stats() const {
 
 void PmergeMe::sort() {
   std::clock_t start_time = std::clock();
-  merge_insertion_sort(d_, d_.begin(), d_.end());
+  merge_insertion_sort(d_.begin(), d_.end());
   std::clock_t end_time = std::clock();
   elapsed_time_d_ = static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC;
 
@@ -89,13 +89,12 @@ void PmergeMe::sort() {
 /*
  * Implementation for std::deque<int>
  * */
-void PmergeMe::merge_insertion_sort(std::deque<int> &d, DequeIt begin,
-                                    DequeIt end) {
+void PmergeMe::merge_insertion_sort(DequeIt begin, DequeIt end) {
   if (end - begin > PmergeMe::GroupSize) {
     DequeIt middle = begin;
     std::advance(middle, (end - begin) / 2);
-    merge_insertion_sort(d, begin, middle);
-    merge_insertion_sort(d, middle, end);
+    merge_insertion_sort(begin, middle);
+    merge_insertion_sort(middle, end);
     merge(begin, middle, end);
   } else {
     insertion_sort(begin, end);
