@@ -2,7 +2,7 @@ SHELL := /bin/sh
 
 OBJDIR   := objdir
 
-CXXFLAGS += -Wall -Wextra -Werror -std=c++98
+CXXFLAGS += -Wall -Wextra -Werror -O2 -std=c++98
 LDFLAGS  +=
 LDLIBS   +=
 CXX      := c++
